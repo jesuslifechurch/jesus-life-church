@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Daily devotional and a 365-day Bible reading plan from Jesus Life Church, Harare.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jesus Life Church">
+    <meta property="og:title" content="Devotional & Bible Plan | Jesus Life Church">
+    <meta property="og:description" content="Daily devotional and a 365-day Bible reading plan from Jesus Life Church, Harare.">
+    <meta property="og:image" content="share.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#09090f">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" type="image/png" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <title>Devotional &amp; Bible Plan | Jesus Life Church</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .tag { display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; background: rgba(124,58,237,.2); color: #c4b5fd; margin-bottom: 10px; }
+        .tag.hot { background: rgba(250,204,21,.18); color: var(--gold); }
+        .devo { max-width: 780px; margin: 30px auto 0; padding: 34px 30px; }
+        .devo h2 { font-size: 1.7rem; letter-spacing: -.5px; margin-bottom: 6px; }
+        .devo .verse { color: var(--gold); font-weight: 700; margin-bottom: 18px; }
+        .devo .msg { color: #e5e7eb; white-space: pre-line; }
+        .devo .prayer { margin-top: 20px; padding: 16px 18px; border-left: 4px solid var(--purple); background: rgba(124,58,237,.1); border-radius: 0 12px 12px 0; font-style: italic; color: #e5e7eb; white-space: pre-line; }
+        .devo-nav { display: flex; justify-content: space-between; gap: 10px; margin-top: 24px; flex-wrap: wrap; }
+
+        .plan { max-width: 900px; margin: 0 auto; }
+        .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-bottom: 20px; }
+        .stat { text-align: center; padding: 18px 10px; }
+        .stat b { display: block; font-size: 1.8rem; line-height: 1.2; }
+        .stat span { font-size: .75rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+        .bar { height: 12px; border-radius: 999px; background: var(--field); border: 1px solid var(--line); overflow: hidden; margin-bottom: 22px; }
+        .bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--purple), var(--gold)); transition: width .5s; }
+        .today-card { text-align: center; padding: 30px 22px; }
+        .today-card .dayno { color: var(--purple-soft); font-weight: 700; letter-spacing: 2px; text-transform: uppercase; font-size: .8rem; }
+        .today-card .ref { font-size: clamp(1.5rem, 4vw, 2.1rem); font-weight: 800; margin: 8px 0 18px; line-height: 1.25; }
+        .btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+        .done-note { color: #86efac; font-weight: 700; margin-top: 14px; }
+        .setup { text-align: center; padding: 30px 22px; }
+        .setup p { color: var(--muted); margin-bottom: 18px; }
+        .setup .row { display: flex; gap: 10px; justify-content: center; align-items: center; flex-wrap: wrap; margin-top: 14px; color: var(--muted); font-size: .9rem; }
+        .setup input[type=date] { width: auto; }
+        .days-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(34px, 1fr)); gap: 6px; margin-top: 14px; }
+        .dg { aspect-ratio: 1/1; border-radius: 8px; border: 1px solid var(--line); background: var(--field); color: var(--muted); font-size: .72rem; cursor: pointer; }
+        .dg:hover { border-color: var(--purple-soft); color: #fff; }
+        .dg.done { background: rgba(34,197,94,.25); border-color: rgba(34,197,94,.5); color: #bbf7d0; }
+        .dg.miss { background: rgba(239,68,68,.12); border-color: rgba(239,68,68,.35); color: #fca5a5; }
+        .dg.now { outline: 2px solid var(--gold); color: #fff; }
+        .dg.sel { background: var(--purple); color: #fff; }
+        .legend { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 14px; font-size: .8rem; color: var(--muted); }
+        .legend i { display: inline-block; width: 12px; height: 12px; border-radius: 4px; vertical-align: -1px; margin-right: 5px; border: 1px solid var(--line); }
+        .jump { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 16px 0 4px; color: var(--muted); font-size: .9rem; }
+        .jump input { width: 90px; }
+        .mini { color: var(--muted); font-size: .85rem; text-align: center; margin-top: 18px; }
+        .link-btn { background: none; border: 0; color: var(--purple-soft); cursor: pointer; font-weight: 600; text-decoration: underline; font-size: .85rem; }
+        @media (max-width: 640px) { .devo { padding: 26px 20px; } .stat b { font-size: 1.4rem; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="JLC logo" class="logo-img" onerror="this.style.display='none'">
+                <span><b>Jesus Life Church</b><small>Forward We Go</small></span>
+            </a>
+            <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="media.html">Media</a></li>
+                <li><a href="store.html">Store</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="more"><a href="#" class="active">More ▾</a>
+                    <ul>
+                        <li><a href="devotional.html">Devotional &amp; Bible Plan</a></li>
+                        <li><a href="notebook.html">Sermon Notes</a></li>
+                        <li><a href="book.html">Book a One-on-One</a></li>
+                        <li><a href="welcome.html">I’m New &amp; Prayer</a></li>
+                        <li><a href="testimony.html">Testimonies</a></li>
+                        <li><a href="gallery.html">Photo Gallery</a></li>
+                        <li><a href="speakup.html">Speak Up (anonymous)</a></li>
+                    </ul>
+                </li>
+                <li><a href="give.html" class="btn-give">Give Online</a></li>
+            </ul></div>
+    </header>
+
+    <main>
+        <div class="page-head">
+            <div class="wrap">
+                <span class="eyebrow">Daily Word</span>
+                <h1>Devotional &amp; Bible Plan</h1>
+                <p>Start your day in the Word: read today’s devotional, then follow the plan to read the whole Bible in a year.</p>
+            </div>
+        </div>
+
+        <!-- Devotional -->
+        <div class="wrap">
+            <div class="card devo" id="devo"></div>
+        </div>
+
+        <!-- Bible plan -->
+        <section class="block" id="plan">
+            <div class="wrap plan">
+                <div class="head">
+                    <span class="eyebrow">Bible in a Year</span>
+                    <h2>Your reading plan</h2>
+                    <p>About three to four chapters a day, from Genesis to Revelation. Your progress is saved on this device.</p>
+                </div>
+                <div id="planBody"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <div class="f-bottom" style="border:0;padding:0;">
+                <p>&copy; 2026 Jesus Life Church · Forward We Go. All rights reserved.</p>
+                <p style="margin-top:8px;"><a href="index.html" style="color:#c4b5fd;text-decoration:none;">Home</a> · <a href="events.html" style="color:#c4b5fd;text-decoration:none;">Events</a> · <a href="media.html" style="color:#c4b5fd;text-decoration:none;">Media</a> · <a href="contact.html" style="color:#c4b5fd;text-decoration:none;">Contact</a></p>
+            </div>
+        </div>
+    </footer>
+
+<script src="site.js"></script>
+<script>
+(function () {
+    const { $, h, todayYmd, daysBetween, addDays, fmtDate, isYmd, loadContent } = JLC;
+
+    /* ================= Daily devotional ================= */
+    loadContent().then((c) => {
+        const box = $('#devo');
+        const list = c.devotionals.filter((d) => d.title).sort((a, b) => String(b.date).localeCompare(String(a.date)));
+        const t = todayYmd();
+        if (!list.length) {
+            box.append(h('span', { class: 'tag', text: 'Daily devotional' }), h('h2', { text: 'Coming soon' }),
+                h('p', { class: 'msg', text: 'Our daily devotional will be posted here. In the meantime, start the Bible reading plan below.' }));
+            return;
+        }
+        let i = Math.max(0, list.findIndex((d) => d.date <= t)); // today's or the most recent
+        function show() {
+            const d = list[i];
+            box.textContent = '';
+            box.append(
+                h('span', { class: 'tag' + (d.date === t ? ' hot' : ''), text: d.date === t ? 'Today’s devotional' : 'Devotional' }),
+                h('h2', { text: d.title }),
+                isYmd(d.date) ? h('div', { style: 'color:var(--muted);font-size:.9rem;margin-bottom:8px', text: fmtDate(d.date, true) }) : null,
+                d.verse ? h('div', { class: 'verse', text: d.verse }) : null,
+                h('div', { class: 'msg', text: d.message || '' }),
+                d.prayer ? h('div', { class: 'prayer', text: 'Prayer: ' + d.prayer }) : null,
+                h('div', { class: 'devo-nav' },
+                    h('button', { class: 'btn btn-ghost btn-sm', type: 'button', text: '← Earlier', disabled: i >= list.length - 1 ? 'disabled' : null, onclick: () => { if (i < list.length - 1) { i++; show(); } } }),
+                    h('button', { class: 'btn btn-ghost btn-sm', type: 'button', text: 'Later →', disabled: i <= 0 ? 'disabled' : null, onclick: () => { if (i > 0) { i--; show(); } } })));
+        }
+        show();
+    });
+
+    /* ================= Bible reading plan ================= */
+    const BOOKS = [['Genesis',50],['Exodus',40],['Leviticus',27],['Numbers',36],['Deuteronomy',34],['Joshua',24],['Judges',21],['Ruth',4],['1 Samuel',31],['2 Samuel',24],['1 Kings',22],['2 Kings',25],['1 Chronicles',29],['2 Chronicles',36],['Ezra',10],['Nehemiah',13],['Esther',10],['Job',42],['Psalms',150],['Proverbs',31],['Ecclesiastes',12],['Song of Solomon',8],['Isaiah',66],['Jeremiah',52],['Lamentations',5],['Ezekiel',48],['Daniel',12],['Hosea',14],['Joel',3],['Amos',9],['Obadiah',1],['Jonah',4],['Micah',7],['Nahum',3],['Habakkuk',3],['Zephaniah',3],['Haggai',2],['Zechariah',14],['Malachi',4],['Matthew',28],['Mark',16],['Luke',24],['John',21],['Acts',28],['Romans',16],['1 Corinthians',16],['2 Corinthians',13],['Galatians',6],['Ephesians',6],['Philippians',4],['Colossians',4],['1 Thessalonians',5],['2 Thessalonians',3],['1 Timothy',6],['2 Timothy',4],['Titus',3],['Philemon',1],['Hebrews',13],['James',5],['1 Peter',5],['2 Peter',3],['1 John',5],['2 John',1],['3 John',1],['Jude',1],['Revelation',22]];
+    const chapters = [];
+    BOOKS.forEach(([b, n]) => { for (let c = 1; c <= n; c++) chapters.push([b, c]); });
+    const DAYS = 365;
+
+    // Reading for day n (1-365): a slice of the chapter list, grouped by book
+    function reading(n) {
+        const a = Math.floor((n - 1) * chapters.length / DAYS);
+        const b = Math.floor(n * chapters.length / DAYS);
+        const parts = [];
+        chapters.slice(a, b).forEach(([book, ch]) => {
+            const last = parts[parts.length - 1];
+            if (last && last.book === book && last.to === ch - 1) last.to = ch;
+            else parts.push({ book: book, from: ch, to: ch });
+        });
+        const text = parts.map((p) => p.book + ' ' + (p.from === p.to ? p.from : p.from + '–' + p.to)).join('; ');
+        const query = parts.map((p) => p.book + ' ' + (p.from === p.to ? p.from : p.from + '-' + p.to)).join('; ');
+        return { text: text, url: 'https://www.biblegateway.com/passage/?search=' + encodeURIComponent(query) + '&version=KJV' };
+    }
+
+    const KEY = 'jlc_bible_plan_v1';
+    let state = { start: '', done: {} };
+    try { const s = JSON.parse(localStorage.getItem(KEY) || 'null'); if (s && isYmd(s.start)) state = s; } catch (e) { /* ignore */ }
+    function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* ignore */ } }
+
+    let selected = 0; // selected day number
+    const body = $('#planBody');
+
+    function dayNow() { return Math.min(DAYS, Math.max(1, daysBetween(state.start, todayYmd()) + 1)); }
+    function doneCount() { return Object.keys(state.done).filter((k) => state.done[k]).length; }
+    function streak() {
+        // consecutive completed days ending today (or yesterday, if today is not done yet)
+        let n = dayNow(), count = 0;
+        if (!state.done[n]) n--;
+        while (n >= 1 && state.done[n]) { count++; n--; }
+        return count;
+    }
+
+    function startPlan(ymd) { state = { start: ymd, done: {} }; save(); selected = 0; render(); }
+
+    function render() {
+        body.textContent = '';
+        if (!state.start) {
+            const dateInput = h('input', { class: 'field', type: 'date', value: todayYmd() });
+            body.append(h('div', { class: 'card setup' },
+                h('h3', { text: 'Ready to begin?' }),
+                h('p', { text: 'Choose a start date and we will show you each day’s reading. Tick it off when you are done.' }),
+                h('button', { class: 'btn btn-primary', type: 'button', text: 'Start today', onclick: () => startPlan(todayYmd()) }),
+                h('div', { class: 'row' }, 'or start on', dateInput,
+                    h('button', { class: 'btn btn-ghost btn-sm', type: 'button', text: 'Start on this date', onclick: () => { if (isYmd(dateInput.value)) startPlan(dateInput.value); } }))));
+            return;
+        }
+        const now = dayNow();
+        const notStarted = daysBetween(state.start, todayYmd()) < 0;
+        if (!selected) selected = notStarted ? 1 : now;
+        const dn = selected;
+        const r = reading(dn);
+        const dayDate = addDays(state.start, dn - 1);
+        const isDone = !!state.done[dn];
+        const pct = Math.round(doneCount() * 100 / DAYS);
+
+        body.append(
+            h('div', { class: 'stats' },
+                h('div', { class: 'card stat' }, h('b', { text: doneCount() + ' / ' + DAYS }), h('span', { text: 'Days read' })),
+                h('div', { class: 'card stat' }, h('b', { text: '🔥 ' + streak() }), h('span', { text: 'Day streak' })),
+                h('div', { class: 'card stat' }, h('b', { text: pct + '%' }), h('span', { text: 'Complete' }))),
+            h('div', { class: 'bar', role: 'progressbar', 'aria-valuenow': pct, 'aria-valuemin': 0, 'aria-valuemax': 100 }, h('i', { style: 'width:' + pct + '%' })),
+
+            h('div', { class: 'card today-card' },
+                h('div', { class: 'dayno', text: (dn === now && !notStarted ? 'Today · ' : '') + 'Day ' + dn + ' · ' + fmtDate(dayDate) }),
+                h('div', { class: 'ref', text: r.text }),
+                h('div', { class: 'btns' },
+                    h('a', { class: 'btn btn-ghost', href: r.url, target: '_blank', rel: 'noopener noreferrer', text: '📖 Read it online' }),
+                    h('button', { class: 'btn ' + (isDone ? 'btn-ghost' : 'btn-primary'), type: 'button', text: isDone ? 'Undo' : '✓ Mark as read', onclick: () => { if (isDone) delete state.done[dn]; else state.done[dn] = true; save(); render(); } })),
+                isDone ? h('div', { class: 'done-note', text: '✓ Well done! This day is complete.' }) : null,
+                h('div', { class: 'jump' }, 'Go to day',
+                    (() => { const i = h('input', { class: 'field', type: 'number', min: 1, max: DAYS, value: dn }); i.addEventListener('change', () => { const v = Math.min(DAYS, Math.max(1, parseInt(i.value, 10) || 1)); selected = v; render(); }); return i; })(),
+                    h('button', { class: 'btn btn-ghost btn-sm', type: 'button', text: 'Back to today', onclick: () => { selected = notStarted ? 1 : now; render(); } }))),
+
+            h('div', { class: 'card', style: 'margin-top:20px' },
+                h('h3', { text: 'All 365 days' }),
+                h('div', { class: 'days-grid', id: 'dgrid' }),
+                h('div', { class: 'legend' },
+                    h('span', null, h('i', { style: 'background:rgba(34,197,94,.4)' }), 'Done'),
+                    h('span', null, h('i', { style: 'background:rgba(239,68,68,.25)' }), 'Missed'),
+                    h('span', null, h('i', { style: 'outline:2px solid var(--gold)' }), 'Today'))),
+
+            h('div', { class: 'mini' }, 'Plan started on ' + fmtDate(state.start) + '. ',
+                h('button', { class: 'link-btn', type: 'button', text: 'Restart plan', onclick: () => { if (confirm('Restart the plan? Your progress on this device will be cleared.')) { state = { start: '', done: {} }; save(); selected = 0; render(); } } })));
+
+        const g = $('#dgrid');
+        for (let d = 1; d <= DAYS; d++) {
+            const cls = 'dg' + (state.done[d] ? ' done' : (d < now && !notStarted ? ' miss' : '')) + (d === now && !notStarted ? ' now' : '') + (d === dn ? ' sel' : '');
+            g.append(h('button', { type: 'button', class: cls, text: d, title: 'Day ' + d + ': ' + reading(d).text, onclick: () => { selected = d; render(); window.scrollTo({ top: $('#plan').offsetTop - 80, behavior: 'smooth' }); } }));
+        }
+    }
+    render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Events and calendar for Jesus Life Church, Harare. Services, all-night prayer, anniversaries and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jesus Life Church">
+    <meta property="og:title" content="Events & Calendar | Jesus Life Church">
+    <meta property="og:description" content="Events and calendar for Jesus Life Church, Harare. Services, all-night prayer, anniversaries and more.">
+    <meta property="og:image" content="share.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#09090f">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" type="image/png" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <title>Events &amp; Calendar | Jesus Life Church</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .cal-layout { display: grid; grid-template-columns: 1.25fr 1fr; gap: 24px; align-items: start; margin-top: 30px; }
+        .cal { padding: 22px; }
+        .cal-top { display: flex; align-items: center; justify-content: space-between; gap: 10px; margin-bottom: 16px; }
+        .cal-top h2 { font-size: 1.25rem; }
+        .cal-nav { display: flex; gap: 8px; }
+        .cal-nav button { width: 38px; height: 38px; border-radius: 10px; border: 1px solid var(--line); background: var(--field); color: #fff; font-size: 1.1rem; cursor: pointer; }
+        .cal-nav button.today { width: auto; padding: 0 14px; font-size: .85rem; font-weight: 600; }
+        .cal-nav button:hover { background: var(--purple); }
+        .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; }
+        .dow { text-align: center; font-size: .72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); padding-bottom: 6px; }
+        .day { position: relative; aspect-ratio: 1 / 1; border-radius: 12px; border: 1px solid transparent; background: var(--field); color: #e5e7eb; font-size: .95rem; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 4px; }
+        .day:hover { border-color: rgba(124,58,237,.6); }
+        .day.out { opacity: .3; }
+        .day.today { border-color: var(--purple-soft); font-weight: 800; color: #fff; }
+        .day.sel { background: rgba(124,58,237,.3); border-color: var(--purple); }
+        .dots { display: flex; gap: 3px; height: 7px; }
+        .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--purple-soft); opacity: .55; }
+        .dot.ev { background: var(--gold); opacity: 1; width: 7px; height: 7px; }
+        .legend { display: flex; gap: 18px; flex-wrap: wrap; margin-top: 16px; font-size: .82rem; color: var(--muted); }
+        .legend span { display: inline-flex; align-items: center; gap: 6px; }
+
+        .side h3 { margin-bottom: 4px; }
+        .side .sub { color: var(--muted); font-size: .9rem; margin-bottom: 14px; }
+        .item { padding: 14px 0; border-top: 1px solid var(--line); }
+        .item:first-of-type { border-top: 0; }
+        .item b { display: block; }
+        .item .meta { color: var(--muted); font-size: .88rem; }
+
+        .tag { display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; background: rgba(124,58,237,.2); color: #c4b5fd; margin-bottom: 8px; }
+        .tag.hot { background: rgba(250,204,21,.18); color: var(--gold); }
+        .ev-list { display: grid; gap: 16px; }
+        .ev-row { display: flex; gap: 18px; align-items: flex-start; flex-wrap: wrap; }
+        .date-badge { flex: none; width: 66px; text-align: center; border-radius: 16px; overflow: hidden; border: 1px solid rgba(250,204,21,.35); background: rgba(250,204,21,.08); }
+        .date-badge b { display: block; font-size: 1.7rem; line-height: 1.2; padding-top: 6px; }
+        .date-badge span { display: block; font-size: .68rem; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; color: var(--gold); padding-bottom: 7px; }
+        .ev-main { flex: 1; min-width: 220px; }
+        .ev-main h3 { margin-bottom: 4px; }
+        .ev-actions { margin-top: 12px; display: flex; gap: 10px; flex-wrap: wrap; }
+        details.past { margin-top: 28px; }
+        details.past summary { cursor: pointer; color: var(--muted); font-weight: 600; padding: 10px 0; }
+        @media (max-width: 860px) { .cal-layout { grid-template-columns: 1fr; } .day { font-size: .85rem; } }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="JLC logo" class="logo-img" onerror="this.style.display='none'">
+                <span><b>Jesus Life Church</b><small>Forward We Go</small></span>
+            </a>
+            <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="events.html" class="active">Events</a></li>
+                <li><a href="media.html">Media</a></li>
+                <li><a href="store.html">Store</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="more"><a href="#">More ▾</a>
+                    <ul>
+                        <li><a href="devotional.html">Devotional &amp; Bible Plan</a></li>
+                        <li><a href="notebook.html">Sermon Notes</a></li>
+                        <li><a href="book.html">Book a One-on-One</a></li>
+                        <li><a href="welcome.html">I’m New &amp; Prayer</a></li>
+                        <li><a href="testimony.html">Testimonies</a></li>
+                        <li><a href="gallery.html">Photo Gallery</a></li>
+                        <li><a href="speakup.html">Speak Up (anonymous)</a></li>
+                    </ul>
+                </li>
+                <li><a href="give.html" class="btn-give">Give Online</a></li>
+            </ul></div>
+    </header>
+
+    <main>
+        <div class="page-head">
+            <div class="wrap">
+                <span class="eyebrow">Stay in the loop</span>
+                <h1>Events &amp; Calendar</h1>
+                <p>Weekly services and special occasions at Jesus Life Church. Tap a date to see what’s on.</p>
+            </div>
+        </div>
+
+        <div class="wrap">
+            <div class="cal-layout">
+                <div class="card cal">
+                    <div class="cal-top">
+                        <h2 id="monthTitle"></h2>
+                        <div class="cal-nav">
+                            <button id="prev" aria-label="Previous month">‹</button>
+                            <button id="todayBtn" class="today">Today</button>
+                            <button id="next" aria-label="Next month">›</button>
+                        </div>
+                    </div>
+                    <div class="cal-grid" id="calGrid"></div>
+                    <div class="legend">
+                        <span><i class="dot ev"></i> Special event</span>
+                        <span><i class="dot"></i> Weekly service</span>
+                    </div>
+                </div>
+
+                <div class="card side" id="dayPanel"></div>
+            </div>
+
+            <section class="block" style="padding-top:60px;">
+                <div class="head"><span class="eyebrow">Coming up</span><h2>Upcoming events</h2></div>
+                <div class="ev-list" id="evList"></div>
+                <details class="past" id="pastBox"><summary>Show past events</summary><div class="ev-list" id="pastList" style="margin-top:14px"></div></details>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <div class="f-bottom" style="border:0;padding:0;">
+                <p>&copy; 2026 Jesus Life Church · Forward We Go. All rights reserved.</p>
+                <p style="margin-top:8px;"><a href="index.html" style="color:#c4b5fd;text-decoration:none;">Home</a> · <a href="media.html" style="color:#c4b5fd;text-decoration:none;">Media</a> · <a href="give.html" style="color:#c4b5fd;text-decoration:none;">Give Online</a> · <a href="contact.html" style="color:#c4b5fd;text-decoration:none;">Contact</a></p>
+            </div>
+        </div>
+    </footer>
+
+<script src="site.js"></script>
+<script>
+(function () {
+    const { $, h, pad, todayYmd, utcOf, addDays, fmtDate, rel, evEnd, upcoming, past, downloadIcs, loadContent, photoUrl } = JLC;
+    let events = [];
+    const t = todayYmd();
+    let [vy, vm] = t.split('-').map(Number); // viewed year / month (1-12)
+    let selected = t;
+
+    const ymd = (y, m, d) => y + '-' + pad(m) + '-' + pad(d);
+    const eventsOn = (d) => events.filter((e) => JLC.isYmd(e.date) && e.date <= d && evEnd(e) >= d);
+    const servicesOn = (d) => SITE.services.filter((s) => new Date(utcOf(d)).getUTCDay() === s.dow);
+
+    function renderCal() {
+        $('#monthTitle').textContent = new Date(Date.UTC(vy, vm - 1, 1)).toLocaleDateString('en-GB', { month: 'long', year: 'numeric', timeZone: 'UTC' });
+        const grid = $('#calGrid');
+        grid.textContent = '';
+        ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'].forEach((d) => grid.append(h('div', { class: 'dow', text: d })));
+        const first = new Date(Date.UTC(vy, vm - 1, 1));
+        const lead = (first.getUTCDay() + 6) % 7; // Monday-first
+        const start = new Date(Date.UTC(vy, vm - 1, 1 - lead));
+        for (let i = 0; i < 42; i++) {
+            const d = new Date(start.getTime() + i * 864e5);
+            const s = ymd(d.getUTCFullYear(), d.getUTCMonth() + 1, d.getUTCDate());
+            const inMonth = d.getUTCMonth() === vm - 1;
+            if (i >= 35 && !inMonth) break; // skip a fully-empty last row
+            const dots = h('div', { class: 'dots' });
+            if (eventsOn(s).length) dots.append(h('i', { class: 'dot ev' }));
+            if (servicesOn(s).length) dots.append(h('i', { class: 'dot' }));
+            const cell = h('button', { type: 'button', class: 'day' + (inMonth ? '' : ' out') + (s === t ? ' today' : '') + (s === selected ? ' sel' : ''), 'aria-label': fmtDate(s, true) },
+                h('span', { text: d.getUTCDate() }), dots);
+            cell.addEventListener('click', () => { selected = s; if (!inMonth) { vy = d.getUTCFullYear(); vm = d.getUTCMonth() + 1; } renderCal(); renderPanel(); });
+            grid.append(cell);
+        }
+    }
+
+    function renderPanel() {
+        const p = $('#dayPanel');
+        p.textContent = '';
+        p.append(h('h3', { text: fmtDate(selected, true) }), h('div', { class: 'sub', text: rel(selected) === 'Past' ? 'Past date' : rel(selected) }));
+        const evs = eventsOn(selected), svcs = servicesOn(selected);
+        if (!evs.length && !svcs.length) p.append(h('div', { class: 'meta', text: 'Nothing scheduled on this day.', style: 'color:var(--muted)' }));
+        evs.forEach((e) => p.append(h('div', { class: 'item' },
+            h('span', { class: 'tag hot', text: 'Special event' }),
+            h('b', { text: e.title }),
+            h('div', { class: 'meta', text: [e.time, e.location || SITE.venue].filter(Boolean).join(' · ') }),
+            e.description ? h('div', { class: 'meta', text: e.description, style: 'margin-top:4px' }) : null)));
+        svcs.forEach((s) => p.append(h('div', { class: 'item' },
+            h('span', { class: 'tag', text: 'Weekly service' }),
+            h('b', { text: s.name }),
+            h('div', { class: 'meta', text: s.times + ' · ' + SITE.venue }))));
+    }
+
+    function eventCard(e, isPast) {
+        const d = new Date(utcOf(e.date));
+        const r = rel(e.date);
+        const range = (evEnd(e) !== e.date) ? fmtDate(e.date) + ' → ' + fmtDate(evEnd(e)) : fmtDate(e.date, true);
+        return h('div', { class: 'card ev-row' },
+            h('div', { class: 'date-badge' }, h('b', { text: d.getUTCDate() }), h('span', { text: d.toLocaleDateString('en-GB', { month: 'short', timeZone: 'UTC' }) })),
+            h('div', { class: 'ev-main' },
+                isPast ? null : h('span', { class: 'tag' + (r === 'Today' || r === 'Tomorrow' ? ' hot' : ''), text: r === 'Past' ? 'Ongoing' : r }),
+                h('h3', { text: e.title }),
+                h('div', { class: 'meta', style: 'color:var(--muted);font-size:.9rem', text: [range, e.time, e.location || SITE.venue].filter(Boolean).join(' · ') }),
+                e.description ? h('p', { text: e.description, style: 'margin-top:6px' }) : null,
+                photoUrl(e.image) ? h('a', { href: photoUrl(e.image), target: '_blank', rel: 'noopener noreferrer' }, h('img', { class: 'flyer', src: photoUrl(e.image), alt: e.title + ' flyer', loading: 'lazy' })) : null,
+                isPast ? null : h('div', { class: 'ev-actions' },
+                    h('button', { class: 'btn btn-ghost btn-sm', type: 'button', text: '📅 Add to my calendar', onclick: () => downloadIcs(e) }),
+                    h('a', { class: 'btn btn-ghost btn-sm', href: JLC.mapsUrl(), target: '_blank', rel: 'noopener noreferrer', text: '📍 Directions' }))));
+    }
+
+    $('#prev').addEventListener('click', () => { vm--; if (vm < 1) { vm = 12; vy--; } renderCal(); });
+    $('#next').addEventListener('click', () => { vm++; if (vm > 12) { vm = 1; vy++; } renderCal(); });
+    $('#todayBtn').addEventListener('click', () => { [vy, vm] = t.split('-').map(Number); selected = t; renderCal(); renderPanel(); });
+
+    renderCal(); renderPanel();
+
+    loadContent().then((c) => {
+        events = c.events.filter((e) => e.title && JLC.isYmd(e.date));
+        renderCal(); renderPanel();
+        const up = upcoming(events), ps = past(events);
+        const list = $('#evList');
+        list.textContent = '';
+        if (!up.length) list.append(h('div', { class: 'empty', text: 'No upcoming events posted yet. Please check back soon.' }));
+        up.forEach((e) => list.append(eventCard(e, false)));
+        if (ps.length) { ps.slice(0, 20).forEach((e) => $('#pastList').append(eventCard(e, true))); } else { $('#pastBox').style.display = 'none'; }
+    });
+})();
+</script>
+</body>
+</html>

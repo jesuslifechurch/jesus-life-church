@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jesus Life Church (JLC) in Harare, Zimbabwe. 2026: The Year of Undeniable Grace. Sunday and midweek services at Hatcliffe Mabanana Blue Tent.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jesus Life Church">
+    <meta property="og:title" content="Jesus Life Church | Harare, Zimbabwe">
+    <meta property="og:description" content="Jesus Life Church (JLC) in Harare, Zimbabwe. 2026: The Year of Undeniable Grace. Sunday and midweek services at Hatcliffe Mabanana Blue Tent.">
+    <meta property="og:image" content="share.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#09090f">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" type="image/png" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <title>Jesus Life Church | Harare, Zimbabwe</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Hero */
+        .hero { position: relative; padding: 170px 0 70px; text-align: center; overflow: hidden; }
+        .hero::before { content: ""; position: absolute; inset: -20% -10% auto -10%; height: 90%; background: radial-gradient(600px 300px at 20% 20%, rgba(124,58,237,.35), transparent 70%), radial-gradient(500px 280px at 80% 10%, rgba(250,204,21,.12), transparent 70%); pointer-events: none; }
+        .hero .wrap { position: relative; max-width: 860px; }
+        .pill { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; border-radius: 999px; font-size: .8rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #1f1300; background: linear-gradient(135deg, #facc15, #f59e0b); }
+        .hero h1 { margin: 24px 0 20px; font-size: clamp(2.4rem, 6vw, 4.2rem); line-height: 1.08; font-weight: 800; letter-spacing: -1.5px; color: #fff; background: linear-gradient(135deg, #ffffff 35%, #a78bfa 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero p.lead { font-size: 1.15rem; color: var(--muted); max-width: 680px; margin: 0 auto 34px; }
+        .actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+        /* Countdown */
+        .countdown { margin: 54px auto 0; max-width: 760px; padding: 26px 24px; border-radius: 24px; background: rgba(255,255,255,.04); border: 1px solid var(--line); }
+        .cd-label { font-size: .75rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--purple-soft); }
+        .cd-name { font-size: 1.35rem; font-weight: 700; margin: 4px 0 2px; }
+        .cd-when { color: var(--muted); font-size: .95rem; margin-bottom: 18px; }
+        .cd-boxes { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; max-width: 460px; margin: 0 auto; }
+        .cd-box { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 14px 6px; }
+        .cd-box b { display: block; font-size: 1.9rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
+        .cd-box span { font-size: .7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); }
+        .cd-live { display: inline-block; padding: 12px 26px; border-radius: 999px; background: rgba(34,197,94,.15); color: #86efac; border: 1px solid rgba(34,197,94,.4); font-weight: 700; }
+
+        /* Services */
+        .svc { display: flex; gap: 16px; align-items: flex-start; }
+        .svc h3 { margin-bottom: 2px; }
+        .svc .t { font-weight: 700; color: #e5e7eb; }
+        .svc .d { color: var(--muted); font-size: .92rem; }
+
+        /* Events */
+        .ev-card { display: flex; gap: 18px; align-items: flex-start; }
+        .date-badge { flex: none; width: 66px; text-align: center; border-radius: 16px; overflow: hidden; border: 1px solid rgba(250,204,21,.35); background: rgba(250,204,21,.08); }
+        .date-badge b { display: block; font-size: 1.7rem; line-height: 1.2; padding-top: 6px; color: #fff; }
+        .date-badge span { display: block; font-size: .68rem; letter-spacing: 2px; font-weight: 700; text-transform: uppercase; color: var(--gold); padding-bottom: 7px; }
+        .ev-body h3 { margin-bottom: 4px; }
+        .tag { display: inline-block; font-size: .72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; background: rgba(124,58,237,.2); color: #c4b5fd; margin-bottom: 8px; }
+        .tag.hot { background: rgba(250,204,21,.18); color: var(--gold); }
+        .meta { color: var(--muted); font-size: .9rem; }
+
+        /* Theme */
+        .theme-card { position: relative; max-width: 860px; margin: 0 auto; padding: 48px 36px; text-align: center; border-radius: 28px; background: linear-gradient(160deg, #1b1633, var(--surface) 60%); border: 1px solid rgba(250,204,21,.25); overflow: hidden; }
+        .theme-card::before { content: "2026"; position: absolute; right: -10px; top: -30px; font-size: 9rem; font-weight: 900; color: rgba(250,204,21,.05); line-height: 1; pointer-events: none; }
+        .theme-card .eyebrow { color: var(--gold); }
+        .theme-card h2 { font-size: clamp(1.8rem, 4.5vw, 2.8rem); font-weight: 800; letter-spacing: -.5px; margin-bottom: 22px; background: linear-gradient(135deg, #fff 30%, var(--gold)); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .verse { max-width: 640px; margin: 0 auto; font-style: italic; font-size: 1.1rem; color: #e5e7eb; }
+        .verse cite { display: block; margin-top: 12px; font-style: normal; font-size: .8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--gold); }
+
+        /* Leadership slider */
+        .slider { position: relative; }
+        .track { display: flex; gap: 20px; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: 6px 2px 18px; scrollbar-width: none; }
+        .track::-webkit-scrollbar { display: none; }
+        .l-card { flex: 0 0 250px; scroll-snap-align: start; background: var(--surface); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; text-align: center; }
+        .l-photo { aspect-ratio: 4 / 5; background: linear-gradient(160deg, #2a1f55, #14142a); display: grid; place-items: center; overflow: hidden; }
+        .l-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .l-photo span { font-size: 3rem; font-weight: 800; color: rgba(255,255,255,.35); letter-spacing: 2px; }
+        .l-info { padding: 16px 14px 20px; }
+        .l-info h3 { font-size: 1.05rem; }
+        .l-role { color: var(--purple-soft); font-size: .85rem; font-weight: 600; }
+        .l-bio { color: var(--muted); font-size: .85rem; margin-top: 6px; }
+        .s-btn { position: absolute; top: 40%; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--line); background: rgba(9,9,15,.85); color: #fff; font-size: 1.4rem; cursor: pointer; z-index: 2; }
+        .s-btn:hover { background: var(--purple); }
+        .s-prev { left: -14px; } .s-next { right: -14px; }
+
+        /* Sermon & devotional teasers */
+        .two { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .thumb { width: 100%; aspect-ratio: 16 / 9; border-radius: 14px; object-fit: cover; background: #1b1633; margin-bottom: 12px; display: block; }
+        .teaser h3 { margin: 6px 0; }
+
+        /* Testimonies */
+        .scripture { max-width: 700px; margin: 0 auto 36px; padding: 22px 26px; text-align: center; font-style: italic; font-size: 1.08rem; color: #e5e7eb; background: rgba(124,58,237,.1); border: 1px solid rgba(124,58,237,.3); border-left: 4px solid var(--purple); border-radius: 14px; }
+        .scripture cite { display: block; margin-top: 10px; font-style: normal; font-size: .8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--purple-soft); }
+        .t-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 22px; margin-bottom: 30px; }
+        .t-card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 30px; }
+        .t-tag { display: block; font-size: .72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--purple-soft); margin-bottom: 12px; }
+        .t-card p { font-style: italic; color: #e5e7eb; margin-bottom: 18px; }
+        .t-by { color: var(--muted); font-size: .9rem; font-weight: 600; }
+        .cta { text-align: center; padding: 44px 24px; border-radius: 24px; background: linear-gradient(135deg, #1e1b4b, var(--surface)); border: 1px solid rgba(124,58,237,.3); }
+        .cta h3 { font-size: 1.4rem; margin-bottom: 8px; }
+        .cta p { color: var(--muted); margin-bottom: 22px; }
+
+        @media (max-width: 860px) {
+            .hero { padding-top: 140px; }
+            .two { grid-template-columns: 1fr; }
+            .theme-card { padding: 36px 22px; }
+            .s-btn { display: none; }
+            .cd-box b { font-size: 1.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="JLC logo" class="logo-img" onerror="this.style.display='none'">
+                <span><b>Jesus Life Church</b><small>Forward We Go</small></span>
+            </a>
+            <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html" class="active">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="media.html">Media</a></li>
+                <li><a href="store.html">Store</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="more"><a href="#">More ▾</a>
+                    <ul>
+                        <li><a href="devotional.html">Devotional &amp; Bible Plan</a></li>
+                        <li><a href="notebook.html">Sermon Notes</a></li>
+                        <li><a href="book.html">Book a One-on-One</a></li>
+                        <li><a href="welcome.html">I’m New &amp; Prayer</a></li>
+                        <li><a href="testimony.html">Testimonies</a></li>
+                        <li><a href="gallery.html">Photo Gallery</a></li>
+                        <li><a href="speakup.html">Speak Up (anonymous)</a></li>
+                    </ul>
+                </li>
+                <li><a href="give.html" class="btn-give">Give Online</a></li>
+            </ul></div>
+    </header>
+
+    <main>
+        <!-- Hero + countdown -->
+        <section class="hero">
+            <div class="wrap">
+                <span class="pill">✦ 2026 · The Year of Undeniable Grace</span>
+                <h1>Welcome to Jesus Life Church</h1>
+                <p class="lead">A vibrant community in Harare, Zimbabwe, experiencing the transformational power of God’s Word, healing, and authentic fellowship. You are welcome!</p>
+                <div class="actions">
+                    <a href="#visit" class="btn btn-primary">Plan a Visit</a>
+                    <a href="https://chat.whatsapp.com/CP5mgk4pEK332ZEfsExe7B?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer" class="btn btn-ghost">💬 Join our WhatsApp Community</a>
+                </div>
+
+                <div class="countdown" id="countdown" aria-live="off">
+                    <div class="cd-label">Next service</div>
+                    <div class="cd-name" id="cdName">&nbsp;</div>
+                    <div class="cd-when" id="cdWhen">&nbsp;</div>
+                    <div class="cd-boxes" id="cdBoxes">
+                        <div class="cd-box"><b id="cdD">--</b><span>Days</span></div>
+                        <div class="cd-box"><b id="cdH">--</b><span>Hours</span></div>
+                        <div class="cd-box"><b id="cdM">--</b><span>Mins</span></div>
+                        <div class="cd-box"><b id="cdS">--</b><span>Secs</span></div>
+                    </div>
+                    <div class="cd-live hidden" id="cdLive">● Service is happening now. Join us!</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visit us -->
+        <section class="block" id="visit">
+            <div class="wrap">
+                <div class="head reveal">
+                    <span class="eyebrow">Visit Us</span>
+                    <h2>Join us this week</h2>
+                    <p>Two services every week, and a warm welcome waiting for you.</p>
+                </div>
+                <div class="grid">
+                    <div class="card svc reveal">
+                        <div class="icon">⛪</div>
+                        <div><h3>Sunday Service</h3><div class="t">Sundays</div><div class="d">10:30 AM – 1:30 PM</div></div>
+                    </div>
+                    <div class="card svc reveal">
+                        <div class="icon">🕯️</div>
+                        <div><h3>Midweek Service</h3><div class="t">Wednesdays</div><div class="d">5:00 PM – 7:30 PM</div></div>
+                    </div>
+                    <div class="card svc reveal">
+                        <div class="icon">📍</div>
+                        <div>
+                            <h3>Venue</h3>
+                            <div class="t" id="venueName">Hatcliffe Mabanana Blue Tent</div>
+                            <div class="d">Harare, Zimbabwe</div>
+                            <a class="btn btn-ghost btn-sm" id="dirBtn" href="#" target="_blank" rel="noopener noreferrer" style="margin-top:12px;">Get directions →</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About teaser -->
+        <section class="block" id="about">
+            <div class="wrap">
+                <div class="card reveal" style="max-width:860px;margin:0 auto;text-align:center;padding:42px 28px;">
+                    <span class="eyebrow">Who We Are</span>
+                    <h2 style="font-size:clamp(1.6rem,4vw,2.3rem);margin-bottom:14px;">A home for all people</h2>
+                    <p style="color:#e5e7eb;font-size:1.05rem;max-width:680px;margin:0 auto 22px;">Founded by M and B Chiyangwa, Jesus Life Church is a faith-filled movement passionate about bringing God’s supernatural reality to this generation. Started in Hatcliffe in 2021, we are growing across Harare.</p>
+                    <a class="btn btn-ghost" href="about.html">Read our story →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Upcoming events -->
+        <section class="block" id="events">
+            <div class="wrap">
+                <div class="head reveal">
+                    <span class="eyebrow">What’s Coming</span>
+                    <h2>Upcoming events</h2>
+                    <p>Mark your calendar and bring someone with you.</p>
+                </div>
+                <div class="grid" id="evGrid"></div>
+                <div style="text-align:center;margin-top:28px;"><a class="btn btn-ghost" href="events.html">Open the full calendar →</a></div>
+            </div>
+        </section>
+
+        <!-- 2026 theme -->
+        <section class="block" id="theme">
+            <div class="wrap">
+                <div class="theme-card reveal">
+                    <span class="eyebrow">Our 2026 Theme</span>
+                    <h2>The Year of Undeniable Grace</h2>
+                    <blockquote class="verse">
+                        “And he said unto me, My grace is sufficient for thee: for my strength is made perfect in weakness. Most gladly therefore will I rather glory in my infirmities, that the power of Christ may rest upon me.”
+                        <cite>2 Corinthians 12:9</cite>
+                    </blockquote>
+                </div>
+            </div>
+        </section>
+
+        <!-- Leadership -->
+        <section class="block" id="leadership">
+            <div class="wrap">
+                <div class="head reveal">
+                    <span class="eyebrow">Our Leadership</span>
+                    <h2>Meet the team</h2>
+                    <p>Servants who love God and love people.</p>
+                </div>
+                <div class="chips" id="lChips"></div>
+                <div class="slider" id="slider">
+                    <button class="s-btn s-prev" id="sPrev" aria-label="Previous">‹</button>
+                    <div class="track" id="lTrack" tabindex="0"></div>
+                    <button class="s-btn s-next" id="sNext" aria-label="Next">›</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sermon + devotional -->
+        <section class="block" id="word">
+            <div class="wrap">
+                <div class="head reveal">
+                    <span class="eyebrow">The Word</span>
+                    <h2>Be fed, every day</h2>
+                    <p>Catch up on a sermon, read today’s devotional, and follow the Bible in a year.</p>
+                </div>
+                <div class="two">
+                    <div class="card teaser" id="sermonCard"></div>
+                    <div class="card teaser" id="devoCard"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Get involved -->
+        <section class="block" id="connect">
+            <div class="wrap">
+                <div class="head reveal">
+                    <span class="eyebrow">Get Involved</span>
+                    <h2>There’s a place for you here</h2>
+                    <p>Join the family, give, or reach out. Everything starts with one step.</p>
+                </div>
+                <div class="grid">
+                    <a class="card reveal" href="https://chat.whatsapp.com/CP5mgk4pEK332ZEfsExe7B?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer">
+                        <div class="icon">💬</div><h3>Join the Community</h3>
+                        <p>Get updates, encouragement and fellowship in our WhatsApp group.</p><span class="go">Join now →</span>
+                    </a>
+                    <a class="card reveal" href="give.html">
+                        <div class="icon">🎁</div><h3>Give Online</h3>
+                        <p>Tithe, offering, seed, partnership or a building pledge, with a receipt.</p><span class="go">Give →</span>
+                    </a>
+                    <a class="card reveal" href="testimony.html">
+                        <div class="icon">🙌</div><h3>Share Your Testimony</h3>
+                        <p>Tell us what God has done in your life so we can rejoice with you.</p><span class="go">Share →</span>
+                    </a>
+                    <a class="card reveal" href="welcome.html">
+                        <div class="icon">👋</div><h3>I’m New</h3>
+                        <p>Tell us you are coming, or send a prayer request. We will reach out.</p><span class="go">Say hello →</span>
+                    </a>
+                    <a class="card reveal" href="store.html">
+                        <div class="icon">🛍️</div><h3>Church Store</h3>
+                        <p>Anointing oil, calendars, stickers, JLC shirts and caps. Request what you need.</p><span class="go">Browse →</span>
+                    </a>
+                    <a class="card reveal" href="book.html">
+                        <div class="icon">🗓️</div><h3>Book a One-on-One</h3>
+                        <p>Request time to meet with the man of God for prayer or counsel.</p><span class="go">Book now →</span>
+                    </a>
+                    <a class="card reveal" href="notebook.html">
+                        <div class="icon">📝</div><h3>My Sermon Notes</h3>
+                        <p>Take notes on Sunday. They are saved on your phone and easy to share.</p><span class="go">Open notebook →</span>
+                    </a>
+                    <a class="card reveal" href="speakup.html">
+                        <div class="icon">🕊️</div><h3>Speak Up</h3>
+                        <p>Share a suggestion or concern without giving your name.</p><span class="go">Send a message →</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonies -->
+        <section class="block" id="testimonies">
+            <div class="wrap">
+                <div class="head reveal">
+                    <span class="eyebrow">Testimonies</span>
+                    <h2>What God is doing</h2>
+                    <p>Stories of faith, healing, and transformation from our congregation in Harare.</p>
+                </div>
+                <blockquote class="scripture reveal">
+                    “And they overcame him by the blood of the Lamb, and by the word of their testimony.”
+                    <cite>Revelation 12:11</cite>
+                </blockquote>
+                <div class="t-grid" id="tGrid"></div>
+                <div class="cta reveal">
+                    <h3>Have a story to share?</h3>
+                    <p>Let us rejoice with what God has done in your life.</p>
+                    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;"><a href="testimony.html#share" class="btn btn-primary">Share Your Testimony →</a><a href="testimony.html" class="btn btn-ghost">Read more testimonies</a></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <div class="f-grid">
+                <div>
+                    <h4>Jesus Life Church</h4>
+                    <p>Hatcliffe Mabanana Blue Tent, Harare, Zimbabwe</p>
+                    <p>Sundays 10:30 AM – 1:30 PM · Wednesdays 5:00 PM – 7:30 PM</p>
+                    <p>Phone: <a class="f-link" href="tel:+263775284134">+263 775 284 134</a></p>
+                    <p>Email: <a class="f-link" href="mailto:jesuslifechurchharare@gmail.com">jesuslifechurchharare@gmail.com</a></p>
+                </div>
+                <div>
+                    <h4>Quick Links</h4>
+                    <a class="f-link" href="about.html">About Us</a>
+                    <a class="f-link" href="events.html">Events &amp; Calendar</a>
+                    <a class="f-link" href="media.html">Sermons &amp; Media</a>
+                    <a class="f-link" href="devotional.html">Devotional &amp; Bible Plan</a>
+                    <a class="f-link" href="contact.html">Contact</a>
+                    <a class="f-link" href="give.html">Give Online</a>
+                    <a class="f-link" href="receipt.html">Check My Receipt</a>
+                    <a class="f-link" href="welcome.html">I’m New &amp; Prayer Requests</a>
+                    <a class="f-link" href="testimony.html">Testimonies</a>
+                    <a class="f-link" href="store.html">Church Store</a>
+                    <a class="f-link" href="book.html">Book a One-on-One</a>
+                    <a class="f-link" href="notebook.html">Sermon Notes</a>
+                    <a class="f-link" href="speakup.html">Speak Up (anonymous)</a>
+                    <a class="f-link" href="gallery.html">Photo Gallery</a>
+                    <a class="f-link" href="privacy.html">Privacy</a>
+                </div>
+                <div>
+                    <h4>Connect With Us</h4>
+                    <div class="socials">
+                        <a href="https://www.facebook.com/share/1JHMHJngQN/" target="_blank" rel="noopener noreferrer">📘 Facebook</a>
+                        <a href="https://chat.whatsapp.com/CP5mgk4pEK332ZEfsExe7B?s=cl&p=a&mlu=4&ilr=4" target="_blank" rel="noopener noreferrer">💬 WhatsApp</a>
+                    </div>
+                </div>
+            </div>
+            <div class="f-bottom">&copy; 2026 Jesus Life Church · Forward We Go. All rights reserved.</div>
+        </div>
+    </footer>
+
+<script src="site.js"></script>
+<script>
+(function () {
+    const { $, h, daysBetween, todayYmd, fmtDate, rel, evEnd, upcoming, nextService, fmtWhen, mapsUrl, loadContent, safeUrl, photoUrl, ytId, pad } = JLC;
+
+    $('#venueName').textContent = SITE.venue;
+    $('#dirBtn').href = mapsUrl();
+
+    /* ---------- Countdown ---------- */
+    function tick() {
+        const n = nextService();
+        if (!n) return;
+        $('#cdName').textContent = n.service.name;
+        if (n.live) {
+            $('#cdWhen').textContent = 'Started at ' + new Date(n.start).toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', timeZone: 'Africa/Harare' }) + ' · ' + SITE.venue;
+            $('#cdBoxes').classList.add('hidden');
+            $('#cdLive').classList.remove('hidden');
+            return;
+        }
+        $('#cdBoxes').classList.remove('hidden');
+        $('#cdLive').classList.add('hidden');
+        $('#cdWhen').textContent = fmtWhen(n.start) + ' · ' + SITE.venue;
+        let s = Math.max(0, Math.floor((n.start - Date.now()) / 1000));
+        const d = Math.floor(s / 86400); s -= d * 86400;
+        const hh = Math.floor(s / 3600); s -= hh * 3600;
+        const m = Math.floor(s / 60); s -= m * 60;
+        $('#cdD').textContent = d; $('#cdH').textContent = pad(hh); $('#cdM').textContent = pad(m); $('#cdS').textContent = pad(s);
+    }
+    tick();
+    setInterval(tick, 1000);
+
+    loadContent().then((c) => {
+        /* ---------- Upcoming events ---------- */
+        const grid = $('#evGrid');
+        grid.textContent = '';
+        const list = upcoming(c.events).slice(0, 3);
+        if (!list.length) {
+            grid.append(h('div', { class: 'empty', style: 'grid-column:1/-1' }, 'No upcoming events posted yet. Please check back soon.'));
+        }
+        list.forEach((ev) => {
+            const d = new Date(JLC.utcOf(ev.date));
+            const day = d.getUTCDate();
+            const mon = d.toLocaleDateString('en-GB', { month: 'short', timeZone: 'UTC' });
+            const r = rel(ev.date);
+            const meta = [ev.time, ev.location || SITE.venue].filter(Boolean).join(' · ');
+            grid.append(h('a', { class: 'card ev-card', href: 'events.html' },
+                h('div', { class: 'date-badge' }, h('b', { text: day }), h('span', { text: mon })),
+                h('div', { class: 'ev-body' },
+                    h('span', { class: 'tag' + (r === 'Today' || r === 'Tomorrow' ? ' hot' : ''), text: r === 'Past' ? 'Ongoing' : r }),
+                    h('h3', { text: ev.title }),
+                    h('div', { class: 'meta', text: meta }),
+                    ev.description ? h('p', { text: ev.description, style: 'margin-top:6px' }) : null
+                )
+            ));
+        });
+
+        /* ---------- Leadership slider ---------- */
+        const leaders = c.leaders.slice();
+        const groups = ['All'].concat(Array.from(new Set(leaders.map((l) => l.group).filter(Boolean))));
+        let active = 'All';
+        const track = $('#lTrack');
+        function initials(name) {
+            const w = String(name || '').replace(/[^A-Za-z\s&]/g, ' ').split(/\s+/).filter(Boolean);
+            if (!w.length) return 'JLC';
+            return (w[0][0] + (w.length > 1 ? w[w.length - 1][0] : '')).toUpperCase();
+        }
+        function renderLeaders() {
+            track.textContent = '';
+            leaders.filter((l) => active === 'All' || l.group === active).forEach((l) => {
+                const src = photoUrl(l.photo);
+                const photo = h('div', { class: 'l-photo' });
+                if (src) {
+                    const img = h('img', { src: src, alt: l.name, loading: 'lazy' });
+                    img.addEventListener('error', () => { photo.textContent = ''; photo.append(h('span', { text: initials(l.name) })); });
+                    photo.append(img);
+                } else { photo.append(h('span', { text: initials(l.name) })); }
+                track.append(h('div', { class: 'l-card' }, photo,
+                    h('div', { class: 'l-info' },
+                        h('h3', { text: l.name }),
+                        h('div', { class: 'l-role', text: l.role || l.group || '' }),
+                        l.bio ? h('div', { class: 'l-bio', text: l.bio }) : null)));
+            });
+            track.scrollTo({ left: 0 });
+        }
+        const chips = $('#lChips');
+        if (groups.length > 2) {
+            groups.forEach((g) => {
+                const b = h('button', { class: 'chip' + (g === active ? ' on' : ''), type: 'button', text: g });
+                b.addEventListener('click', () => {
+                    active = g;
+                    chips.querySelectorAll('.chip').forEach((x) => x.classList.toggle('on', x.textContent === g));
+                    renderLeaders();
+                });
+                chips.append(b);
+            });
+        } else { chips.classList.add('hidden'); }
+        renderLeaders();
+
+        const step = () => (track.querySelector('.l-card') ? track.querySelector('.l-card').offsetWidth + 20 : 270);
+        $('#sPrev').addEventListener('click', () => track.scrollBy({ left: -step() }));
+        $('#sNext').addEventListener('click', () => track.scrollBy({ left: step() }));
+        // Auto-slide (pauses when the visitor interacts; off for reduced-motion)
+        const reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        let paused = false;
+        ['mouseenter', 'touchstart', 'focusin'].forEach((e) => $('#slider').addEventListener(e, () => { paused = true; }, { passive: true }));
+        ['mouseleave', 'touchend', 'focusout'].forEach((e) => $('#slider').addEventListener(e, () => { paused = false; }, { passive: true }));
+        if (!reduce) {
+            setInterval(() => {
+                if (paused || track.scrollWidth <= track.clientWidth + 5) return;
+                const atEnd = track.scrollLeft + track.clientWidth >= track.scrollWidth - 5;
+                if (atEnd) track.scrollTo({ left: 0 }); else track.scrollBy({ left: step() });
+            }, 4500);
+        }
+
+        /* ---------- Testimonies (approved ones from the sheet) ---------- */
+        const tg = $('#tGrid');
+        const tl = (c.testimonies || []).filter((t) => t.testimony).slice(0, 2);
+        if (!tl.length) { tg.classList.add('hidden'); }
+        tl.forEach((t) => {
+            const txt = String(t.testimony);
+            tg.append(h('div', { class: 't-card' },
+                h('span', { class: 't-tag', text: t.category || 'Testimony' }),
+                h('p', { text: '“' + (txt.length > 260 ? txt.slice(0, 260).trim() + '…' : txt) + '”' }),
+                h('div', { class: 't-by', text: '— ' + (t.name || 'Anonymous') })));
+        });
+
+        /* ---------- Latest sermon ---------- */
+        const sc = $('#sermonCard');
+        const sermons = c.sermons.filter((s) => s.title).sort((a, b) => String(b.date).localeCompare(String(a.date)));
+        sc.append(h('span', { class: 'tag', text: 'Latest sermon' }));
+        if (sermons.length) {
+            const s = sermons[0];
+            const yt = ytId(s.link);
+            if (yt) sc.append(h('img', { class: 'thumb', src: 'https://img.youtube.com/vi/' + yt + '/hqdefault.jpg', alt: '', loading: 'lazy' }));
+            sc.append(h('h3', { text: s.title }),
+                h('p', { text: [s.speaker, JLC.isYmd(s.date) ? fmtDate(s.date) : ''].filter(Boolean).join(' · ') }),
+                h('div', { style: 'display:flex;gap:10px;flex-wrap:wrap;margin-top:14px' },
+                    safeUrl(s.link) ? h('a', { class: 'btn btn-primary btn-sm', href: safeUrl(s.link), target: '_blank', rel: 'noopener noreferrer', text: (s.type === 'Audio' ? '🎧 Listen' : '▶ Watch') }) : null,
+                    h('a', { class: 'btn btn-ghost btn-sm', href: 'media.html', text: 'All sermons' })));
+        } else {
+            sc.append(h('h3', { text: 'Sermons & Media' }), h('p', { text: 'Messages from our services will be posted here. Visit the media page to see what is available.' }),
+                h('div', { style: 'margin-top:14px' }, h('a', { class: 'btn btn-ghost btn-sm', href: 'media.html', text: 'Open media page' })));
+        }
+
+        /* ---------- Devotional teaser ---------- */
+        const dc = $('#devoCard');
+        const today = todayYmd();
+        const devos = c.devotionals.filter((d) => d.title).sort((a, b) => String(b.date).localeCompare(String(a.date)));
+        const dev = devos.find((d) => d.date === today) || devos.find((d) => d.date <= today) || null;
+        dc.append(h('span', { class: 'tag hot', text: dev && dev.date === today ? 'Today’s devotional' : 'Devotional' }));
+        if (dev) {
+            const txt = String(dev.message || '');
+            dc.append(h('h3', { text: dev.title }), dev.verse ? h('div', { class: 'meta', text: dev.verse }) : null,
+                h('p', { text: txt.length > 170 ? txt.slice(0, 170).trim() + '…' : txt, style: 'margin-top:8px' }),
+                h('div', { style: 'margin-top:14px' }, h('a', { class: 'btn btn-primary btn-sm', href: 'devotional.html', text: 'Read more' })));
+        } else {
+            dc.append(h('h3', { text: 'Bible in a Year' }), h('p', { text: 'Follow a simple 365-day reading plan, tick off each day and keep your streak going.' }),
+                h('div', { style: 'margin-top:14px' }, h('a', { class: 'btn btn-primary btn-sm', href: 'devotional.html', text: 'Start reading' })));
+        }
+    });
+})();
+</script>
+</body>
+</html>

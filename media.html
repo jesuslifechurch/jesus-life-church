@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sermons and media from Jesus Life Church, Harare. Watch, listen and catch up on messages.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jesus Life Church">
+    <meta property="og:title" content="Sermons & Media | Jesus Life Church">
+    <meta property="og:description" content="Sermons and media from Jesus Life Church, Harare. Watch, listen and catch up on messages.">
+    <meta property="og:image" content="share.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#09090f">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" type="image/png" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <title>Sermons &amp; Media | Jesus Life Church</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .tools { max-width: 640px; margin: 28px auto 0; }
+        .thumb { width: 100%; aspect-ratio: 16 / 9; border-radius: 14px; object-fit: cover; background: linear-gradient(160deg, #2a1f55, #14142a); display: grid; place-items: center; margin-bottom: 14px; font-size: 2.4rem; color: rgba(255,255,255,.4); }
+        img.thumb { display: block; }
+        .s-card { display: flex; flex-direction: column; }
+        .s-card h3 { margin: 6px 0 4px; }
+        .s-card .meta { color: var(--muted); font-size: .9rem; }
+        .s-card .btn { margin-top: 16px; align-self: flex-start; }
+        .tag { display: inline-block; align-self: flex-start; font-size: .72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: 3px 10px; border-radius: 999px; background: rgba(124,58,237,.2); color: #c4b5fd; }
+        .tag.series { background: rgba(250,204,21,.15); color: var(--gold); margin-left: 6px; }
+        .count { text-align: center; color: var(--muted); font-size: .9rem; margin-bottom: 18px; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="JLC logo" class="logo-img" onerror="this.style.display='none'">
+                <span><b>Jesus Life Church</b><small>Forward We Go</small></span>
+            </a>
+            <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="media.html" class="active">Media</a></li>
+                <li><a href="store.html">Store</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="more"><a href="#">More ▾</a>
+                    <ul>
+                        <li><a href="devotional.html">Devotional &amp; Bible Plan</a></li>
+                        <li><a href="notebook.html">Sermon Notes</a></li>
+                        <li><a href="book.html">Book a One-on-One</a></li>
+                        <li><a href="welcome.html">I’m New &amp; Prayer</a></li>
+                        <li><a href="testimony.html">Testimonies</a></li>
+                        <li><a href="gallery.html">Photo Gallery</a></li>
+                        <li><a href="speakup.html">Speak Up (anonymous)</a></li>
+                    </ul>
+                </li>
+                <li><a href="give.html" class="btn-give">Give Online</a></li>
+            </ul></div>
+    </header>
+
+    <main>
+        <div class="page-head">
+            <div class="wrap">
+                <span class="eyebrow">Be fed by the Word</span>
+                <h1>Sermons &amp; Media</h1>
+                <p>Watch, listen and catch up on messages from Jesus Life Church.</p>
+                <div class="tools">
+                    <input class="field" id="q" type="search" placeholder="Search by title, speaker or series" aria-label="Search sermons">
+                </div>
+            </div>
+        </div>
+
+        <div class="wrap" style="margin-top:26px;">
+            <div class="chips" id="typeChips"></div>
+            <div class="count" id="count"></div>
+            <div class="grid" id="list"></div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <div class="f-bottom" style="border:0;padding:0;">
+                <p>&copy; 2026 Jesus Life Church · Forward We Go. All rights reserved.</p>
+                <p style="margin-top:8px;"><a href="index.html" style="color:#c4b5fd;text-decoration:none;">Home</a> · <a href="events.html" style="color:#c4b5fd;text-decoration:none;">Events</a> · <a href="devotional.html" style="color:#c4b5fd;text-decoration:none;">Devotional</a> · <a href="contact.html" style="color:#c4b5fd;text-decoration:none;">Contact</a></p>
+            </div>
+        </div>
+    </footer>
+
+<script src="site.js"></script>
+<script>
+(function () {
+    const { $, h, safeUrl, ytId, isYmd, fmtDate, loadContent } = JLC;
+    let all = [], type = 'All', term = '';
+
+    function render() {
+        const list = $('#list');
+        list.textContent = '';
+        const items = all.filter((s) => (type === 'All' || s.type === type) &&
+            (!term || [s.title, s.speaker, s.series].join(' ').toLowerCase().includes(term)));
+        $('#count').textContent = all.length ? items.length + (items.length === 1 ? ' message' : ' messages') : '';
+        if (!items.length) {
+            list.append(h('div', { class: 'empty', style: 'grid-column:1/-1', text: all.length ? 'No messages match your search.' : 'Sermons and media will be posted here soon. Please check back.' }));
+            return;
+        }
+        items.forEach((s) => {
+            const yt = ytId(s.link);
+            const url = safeUrl(s.link);
+            const kind = s.type === 'Audio' ? 'Audio' : s.type === 'Notes' ? 'Notes' : 'Video';
+            const icon = kind === 'Audio' ? '🎧' : kind === 'Notes' ? '📄' : '▶';
+            const thumb = yt ? h('img', { class: 'thumb', src: 'https://img.youtube.com/vi/' + yt + '/hqdefault.jpg', alt: '', loading: 'lazy' }) : h('div', { class: 'thumb', text: icon });
+            list.append(h('div', { class: 'card s-card' }, thumb,
+                h('div', null, h('span', { class: 'tag', text: kind }), s.series ? h('span', { class: 'tag series', text: s.series }) : null),
+                h('h3', { text: s.title }),
+                h('div', { class: 'meta', text: [s.speaker, isYmd(s.date) ? fmtDate(s.date) : ''].filter(Boolean).join(' · ') }),
+                url ? h('a', { class: 'btn btn-primary btn-sm', href: url, target: '_blank', rel: 'noopener noreferrer', text: kind === 'Audio' ? '🎧 Listen' : kind === 'Notes' ? '📄 Open notes' : '▶ Watch' }) : null));
+        });
+    }
+
+    $('#q').addEventListener('input', (e) => { term = e.target.value.trim().toLowerCase(); render(); });
+
+    loadContent().then((c) => {
+        all = c.sermons.filter((s) => s.title).sort((a, b) => String(b.date).localeCompare(String(a.date)));
+        const types = ['All'].concat(['Video', 'Audio', 'Notes'].filter((t) => all.some((s) => s.type === t)));
+        const chips = $('#typeChips');
+        if (types.length > 2) {
+            types.forEach((t) => {
+                const b = h('button', { class: 'chip' + (t === type ? ' on' : ''), type: 'button', text: t });
+                b.addEventListener('click', () => { type = t; chips.querySelectorAll('.chip').forEach((x) => x.classList.toggle('on', x.textContent === t)); render(); });
+                chips.append(b);
+            });
+        } else { chips.classList.add('hidden'); }
+        render();
+    });
+})();
+</script>
+</body>
+</html>

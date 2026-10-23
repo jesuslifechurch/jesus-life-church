@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Photos from services and events at Jesus Life Church, Harare.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jesus Life Church">
+    <meta property="og:title" content="Photo Gallery | Jesus Life Church">
+    <meta property="og:description" content="Photos from services and events at Jesus Life Church, Harare.">
+    <meta property="og:image" content="share.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#09090f">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" type="image/png" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <title>Photo Gallery | Jesus Life Church</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .gal { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 14px; }
+        .gal button { padding: 0; border: 0; background: var(--surface); border-radius: 16px; overflow: hidden; cursor: pointer; position: relative; aspect-ratio: 1 / 1; }
+        .gal img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .35s; }
+        .gal button:hover img { transform: scale(1.05); }
+        .gal .cap { position: absolute; left: 0; right: 0; bottom: 0; padding: 26px 12px 10px; font-size: .85rem; color: #fff; text-align: left; background: linear-gradient(transparent, rgba(0,0,0,.75)); }
+        .lb { position: fixed; inset: 0; z-index: 2000; background: rgba(0,0,0,.92); display: none; align-items: center; justify-content: center; flex-direction: column; padding: 20px; }
+        .lb.on { display: flex; }
+        .lb img { max-width: 100%; max-height: 80vh; border-radius: 12px; }
+        .lb p { color: #e5e7eb; margin-top: 12px; text-align: center; }
+        .lb .x { position: absolute; top: 14px; right: 18px; background: none; border: 0; color: #fff; font-size: 2rem; cursor: pointer; }
+        .lb .nav-b { position: absolute; top: 50%; transform: translateY(-50%); width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line); background: rgba(255,255,255,.1); color: #fff; font-size: 1.6rem; cursor: pointer; }
+        .lb .prev { left: 14px; } .lb .next { right: 14px; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="JLC logo" class="logo-img" onerror="this.style.display='none'">
+                <span><b>Jesus Life Church</b><small>Forward We Go</small></span>
+            </a>
+            <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="media.html">Media</a></li>
+                <li><a href="store.html">Store</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="more"><a href="#" class="active">More ▾</a>
+                    <ul>
+                        <li><a href="devotional.html">Devotional &amp; Bible Plan</a></li>
+                        <li><a href="notebook.html">Sermon Notes</a></li>
+                        <li><a href="book.html">Book a One-on-One</a></li>
+                        <li><a href="welcome.html">I’m New &amp; Prayer</a></li>
+                        <li><a href="testimony.html">Testimonies</a></li>
+                        <li><a href="gallery.html">Photo Gallery</a></li>
+                        <li><a href="speakup.html">Speak Up (anonymous)</a></li>
+                    </ul>
+                </li>
+                <li><a href="give.html" class="btn-give">Give Online</a></li>
+            </ul></div>
+    </header>
+
+    <main>
+        <div class="page-head">
+            <div class="wrap">
+                <span class="eyebrow">Moments</span>
+                <h1>Photo Gallery</h1>
+                <p>Moments of worship, fellowship and celebration at Jesus Life Church.</p>
+            </div>
+        </div>
+        <div class="wrap" style="margin-top:30px;">
+            <div class="gal" id="gal"></div>
+        </div>
+        <div class="lb" id="lb" role="dialog" aria-modal="true" aria-label="Photo viewer">
+            <button class="x" id="lbX" aria-label="Close">×</button>
+            <button class="nav-b prev" id="lbP" aria-label="Previous">‹</button>
+            <img id="lbImg" alt="">
+            <p id="lbCap"></p>
+            <button class="nav-b next" id="lbN" aria-label="Next">›</button>
+        </div>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <div class="f-bottom" style="border:0;padding:0;">
+                <p>&copy; 2026 Jesus Life Church · Forward We Go. All rights reserved.</p>
+                <p style="margin-top:8px;"><a href="index.html" style="color:#c4b5fd;text-decoration:none;">Home</a> · <a href="about.html" style="color:#c4b5fd;text-decoration:none;">About</a> · <a href="welcome.html" style="color:#c4b5fd;text-decoration:none;">I’m New</a> · <a href="gallery.html" style="color:#c4b5fd;text-decoration:none;">Gallery</a> · <a href="give.html" style="color:#c4b5fd;text-decoration:none;">Give Online</a> · <a href="privacy.html" style="color:#c4b5fd;text-decoration:none;">Privacy</a></p>
+            </div>
+        </div>
+    </footer>
+
+<script src="site.js"></script>
+<script>
+(function () {
+    const { $, h, photoUrl, loadContent } = JLC;
+    let items = [], idx = 0;
+    function open(i) { idx = (i + items.length) % items.length; $('#lbImg').src = items[idx].src; $('#lbImg').alt = items[idx].caption || ''; $('#lbCap').textContent = items[idx].caption || ''; $('#lb').classList.add('on'); }
+    function close() { $('#lb').classList.remove('on'); }
+    $('#lbX').addEventListener('click', close);
+    $('#lbP').addEventListener('click', () => open(idx - 1));
+    $('#lbN').addEventListener('click', () => open(idx + 1));
+    $('#lb').addEventListener('click', (e) => { if (e.target.id === 'lb') close(); });
+    document.addEventListener('keydown', (e) => { if (!$('#lb').classList.contains('on')) return; if (e.key === 'Escape') close(); if (e.key === 'ArrowLeft') open(idx - 1); if (e.key === 'ArrowRight') open(idx + 1); });
+
+    loadContent().then((c) => {
+        const g = $('#gal');
+        items = (c.gallery || []).map((p) => ({ src: photoUrl(p.photo), caption: p.caption, date: p.date })).filter((p) => p.src)
+            .sort((a, b) => String(b.date || '').localeCompare(String(a.date || '')));
+        if (!items.length) { g.style.display = 'block'; g.append(h('div', { class: 'empty', text: 'Photos will be shared here soon. Please check back.' })); return; }
+        items.forEach((p, i) => g.append(h('button', { type: 'button', 'aria-label': p.caption || 'Open photo', onclick: () => open(i) },
+            h('img', { src: p.src, alt: p.caption || '', loading: 'lazy' }), p.caption ? h('span', { class: 'cap', text: p.caption }) : null)));
+    });
+})();
+</script>
+</body>
+</html>

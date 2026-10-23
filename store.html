@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Order Jesus Life Church products: anointing oil, calendars, stickers, JLC shirts and caps.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jesus Life Church">
+    <meta property="og:title" content="JLC Store | Jesus Life Church">
+    <meta property="og:description" content="Order Jesus Life Church products: anointing oil, calendars, stickers, JLC shirts and caps.">
+    <meta property="og:image" content="share.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#09090f">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" type="image/png" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <title>JLC Store | Jesus Life Church</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .prod { display: flex; flex-direction: column; padding: 0; overflow: hidden; }
+        .p-img { aspect-ratio: 4 / 3; background: linear-gradient(160deg, #2a1f55, #14142a); display: grid; place-items: center; font-size: 3rem; overflow: hidden; }
+        .p-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .p-body { padding: 18px 20px 22px; display: flex; flex-direction: column; gap: 6px; flex: 1; }
+        .p-body h3 { font-size: 1.1rem; }
+        .p-price { color: var(--gold); font-weight: 800; font-size: 1.1rem; }
+        .p-row { display: flex; gap: 10px; margin-top: 8px; align-items: center; }
+        .p-row select, .p-row input { padding: 10px 12px; border-radius: 10px; background: var(--field); border: 1px solid var(--line); color: #fff; font-size: .95rem; }
+        .p-row input { width: 70px; }
+        .sold { color: #fca5a5; font-weight: 700; margin-top: 8px; }
+        #bar { position: fixed; left: 50%; transform: translateX(-50%); bottom: 18px; z-index: 910; display: none; align-items: center; gap: 14px; padding: 12px 18px; background: var(--purple); color: #fff; border-radius: 999px; font-weight: 700; box-shadow: 0 10px 30px rgba(0,0,0,.5); cursor: pointer; border: 0; max-width: calc(100% - 100px); }
+        #bar.on { display: flex; }
+        .cart-line { display: flex; justify-content: space-between; gap: 12px; padding: 12px 0; border-top: 1px solid var(--line); align-items: center; flex-wrap: wrap; }
+        .cart-line:first-of-type { border-top: 0; }
+        .cart-line b { display: block; }
+        .cart-line .meta { color: var(--muted); font-size: .88rem; }
+        .qty { display: inline-flex; align-items: center; gap: 8px; }
+        .qty button { width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--line); background: var(--field); color: #fff; font-size: 1.1rem; cursor: pointer; }
+        .total-row { display: flex; justify-content: space-between; padding-top: 16px; margin-top: 8px; border-top: 2px dashed var(--line); font-weight: 800; font-size: 1.1rem; }
+        .note-box { max-width: 720px; margin: 22px auto 0; padding: 16px 20px; border-radius: 14px; background: rgba(250,204,21,.08); border: 1px solid rgba(250,204,21,.3); color: #fde68a; text-align: center; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="JLC logo" class="logo-img" onerror="this.style.display='none'">
+                <span><b>Jesus Life Church</b><small>Forward We Go</small></span>
+            </a>
+            <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="media.html">Media</a></li>
+                <li><a href="store.html" class="active">Store</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="more"><a href="#">More ▾</a>
+                    <ul>
+                        <li><a href="devotional.html">Devotional &amp; Bible Plan</a></li>
+                        <li><a href="notebook.html">Sermon Notes</a></li>
+                        <li><a href="book.html">Book a One-on-One</a></li>
+                        <li><a href="welcome.html">I’m New &amp; Prayer</a></li>
+                        <li><a href="testimony.html">Testimonies</a></li>
+                        <li><a href="gallery.html">Photo Gallery</a></li>
+                        <li><a href="speakup.html">Speak Up (anonymous)</a></li>
+                    </ul>
+                </li>
+                <li><a href="give.html" class="btn-give">Give Online</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-head">
+            <div class="wrap">
+                <span class="eyebrow">Church Store</span>
+                <h1>JLC Store</h1>
+                <p>Anointing oil, calendars, stickers, and JLC shirts and caps. Request what you need and we will confirm with you.</p>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="note-box" id="storeNote"></div>
+            <div class="chips" id="cats" style="margin-top:28px;"></div>
+            <div class="grid" id="prods" style="margin-top:6px;"></div>
+
+            <section class="block" id="cartSection" style="display:none;">
+                <div class="head"><span class="eyebrow">Your basket</span><h2>Place your request</h2></div>
+                <div class="card form-card" style="margin-top:0;">
+                    <div id="cartLines"></div>
+                    <div class="total-row"><span>Total</span><span id="cartTotal"></span></div>
+
+                    <form id="orderForm" novalidate>
+                        <div class="row2">
+                            <div><label class="fl" for="oName">Your name <span class="req">*</span></label><input class="field" id="oName" type="text" maxlength="80" autocomplete="name"></div>
+                            <div><label class="fl" for="oPhone">Phone / WhatsApp <span class="req">*</span></label><input class="field" id="oPhone" type="tel" maxlength="20" autocomplete="tel"></div>
+                        </div>
+                        <label class="fl" for="oDel">How would you like to receive it?</label>
+                        <select class="field" id="oDel"><option>Collect at church</option><option>Delivery (we will arrange with you)</option></select>
+                        <label class="fl" for="oNotes">Notes (optional)</label>
+                        <textarea class="field" id="oNotes" maxlength="400" style="min-height:90px;" placeholder="e.g. sizes, colours, or when you need it"></textarea>
+                        <div class="hp" aria-hidden="true"><label>Leave this empty <input id="oHp" type="text" tabindex="-1" autocomplete="off"></label></div>
+                        <div id="oOut"></div>
+                        <button type="submit" class="btn btn-primary" id="oBtn" style="width:100%;margin-top:20px;">Send my request</button>
+                        <p class="tiny">No payment is taken on this website. We will contact you to confirm availability and how to pay. See our <a href="privacy.html">privacy notice</a>.</p>
+                    </form>
+                </div>
+            </section>
+        </div>
+        <button id="bar" type="button"><span id="barText"></span><span>View basket →</span></button>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <div class="f-bottom" style="border:0;padding:0;">
+                <p>&copy; 2026 Jesus Life Church · Forward We Go. All rights reserved.</p>
+                <p style="margin-top:8px;"><a href="index.html" style="color:#c4b5fd;text-decoration:none;">Home</a> · <a href="store.html" style="color:#c4b5fd;text-decoration:none;">Store</a> · <a href="book.html" style="color:#c4b5fd;text-decoration:none;">Book</a> · <a href="welcome.html" style="color:#c4b5fd;text-decoration:none;">I’m New</a> · <a href="give.html" style="color:#c4b5fd;text-decoration:none;">Give Online</a> · <a href="privacy.html" style="color:#c4b5fd;text-decoration:none;">Privacy</a></p>
+            </div>
+        </div>
+    </footer>
+
+<script src="site.js"></script>
+<script>
+(function () {
+    const { $, h, photoUrl, loadContent, postForm, waLink } = JLC;
+    let products = [], basket = [], cat = 'All';
+    const KEY = 'jlc_basket_v1';
+    try { const b = JSON.parse(localStorage.getItem(KEY) || '[]'); if (Array.isArray(b)) basket = b.filter((x) => x && x.name && x.qty > 0); } catch (e) { /* ignore */ }
+    const save = () => { try { localStorage.setItem(KEY, JSON.stringify(basket)); } catch (e) { /* ignore */ } };
+    const num = (v) => Number(String(v == null ? '' : v).replace(/[^0-9.]/g, '')) || 0;
+    const money = (n, c) => (c || 'USD') + ' ' + n.toFixed(2);
+
+    function totals() {
+        const t = {}; let unpriced = false;
+        basket.forEach((l) => { if (l.price > 0) t[l.currency] = (t[l.currency] || 0) + l.price * l.qty; else unpriced = true; });
+        let s = Object.keys(t).map((c) => money(t[c], c)).join(' + ');
+        if (!s) s = 'To be confirmed'; else if (unpriced) s += ' (+ items priced on request)';
+        return s;
+    }
+    function count() { return basket.reduce((a, l) => a + l.qty, 0); }
+
+    function renderProducts() {
+        const g = $('#prods'); g.textContent = '';
+        const list = products.filter((p) => cat === 'All' || p.category === cat);
+        if (!products.length) { g.append(h('div', { class: 'empty', style: 'grid-column:1/-1', text: 'Our store is opening soon. Please check back, or message us on WhatsApp to ask about an item.' })); return; }
+        list.forEach((p) => {
+            const price = num(p.price), cur = p.currency || 'USD';
+            const soldOut = String(p.available).toLowerCase() === 'no';
+            const opts = String(p.options || '').split(',').map((o) => o.trim()).filter(Boolean);
+            const sel = opts.length ? h('select', { 'aria-label': 'Option' }, opts.map((o) => h('option', { value: o, text: o }))) : null;
+            const qty = h('input', { type: 'number', min: 1, max: 50, value: 1, 'aria-label': 'Quantity' });
+            const src = photoUrl(p.image);
+            const img = h('div', { class: 'p-img' });
+            if (src) { const im = h('img', { src: src, alt: p.name, loading: 'lazy' }); im.addEventListener('error', () => { img.textContent = '🛍️'; }); img.append(im); } else img.textContent = '🛍️';
+            const add = h('button', { class: 'btn btn-primary btn-sm', type: 'button', text: 'Add to basket' });
+            add.addEventListener('click', () => {
+                const option = sel ? sel.value : '';
+                const q = Math.max(1, Math.min(50, parseInt(qty.value, 10) || 1));
+                const ex = basket.find((l) => l.name === p.name && l.option === option);
+                if (ex) ex.qty = Math.min(50, ex.qty + q); else basket.push({ name: p.name, option: option, qty: q, price: price, currency: cur });
+                save(); renderCart(); add.textContent = 'Added ✓'; setTimeout(() => { add.textContent = 'Add to basket'; }, 1200);
+            });
+            g.append(h('div', { class: 'card prod' }, img,
+                h('div', { class: 'p-body' },
+                    h('h3', { text: p.name }),
+                    p.description ? h('p', { text: p.description }) : null,
+                    h('div', { class: 'p-price', text: price > 0 ? money(price, cur) : 'Ask for price' }),
+                    soldOut ? h('div', { class: 'sold', text: 'Sold out' }) : h('div', { class: 'p-row' }, sel, qty, add))));
+        });
+    }
+
+    function renderCart() {
+        const sec = $('#cartSection'), bar = $('#bar');
+        sec.style.display = basket.length ? '' : 'none';
+        bar.classList.toggle('on', basket.length > 0);
+        $('#barText').textContent = '🛒 ' + count() + (count() === 1 ? ' item' : ' items') + ' · ' + totals();
+        const box = $('#cartLines'); box.textContent = '';
+        basket.forEach((l, i) => {
+            const minus = h('button', { type: 'button', 'aria-label': 'Less', text: '−' }), plus = h('button', { type: 'button', 'aria-label': 'More', text: '+' });
+            minus.addEventListener('click', () => { l.qty--; if (l.qty < 1) basket.splice(i, 1); save(); renderCart(); });
+            plus.addEventListener('click', () => { l.qty = Math.min(50, l.qty + 1); save(); renderCart(); });
+            const rm = h('button', { class: 'link-btn', type: 'button', text: 'Remove', style: 'background:none;border:0;color:#a78bfa;cursor:pointer;text-decoration:underline;font-size:.85rem' });
+            rm.addEventListener('click', () => { basket.splice(i, 1); save(); renderCart(); });
+            box.append(h('div', { class: 'cart-line' },
+                h('div', null, h('b', { text: l.name }), h('span', { class: 'meta', text: [l.option, l.price > 0 ? money(l.price, l.currency) + ' each' : 'price on request'].filter(Boolean).join(' · ') })),
+                h('div', { class: 'qty' }, minus, h('span', { text: l.qty }), plus), rm));
+        });
+        $('#cartTotal').textContent = totals();
+    }
+
+    $('#bar').addEventListener('click', () => $('#cartSection').scrollIntoView({ behavior: 'smooth' }));
+
+    function show(ok, text, extra) {
+        const o = $('#oOut'); o.textContent = '';
+        o.append(h('div', { class: ok ? 'msg-ok' : 'msg-err', text: text }));
+        if (extra) o.append(extra);
+    }
+    $('#orderForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = $('#oName').value.trim(), phone = $('#oPhone').value.trim();
+        if (!basket.length) return show(false, 'Your basket is empty.');
+        if (!name || phone.replace(/\D/g, '').length < 9) return show(false, 'Please enter your name and a valid phone number.');
+        const lines = basket.map((l) => l.qty + ' x ' + l.name + (l.option ? ' (' + l.option + ')' : '')).join('; ');
+        const wa = 'Hello Jesus Life Church, I would like to order: ' + lines + '. Total: ' + totals() + '. Name: ' + name + ', ' + phone + '. ' + $('#oDel').value + '.';
+        const btn = $('#oBtn'); btn.disabled = true; btn.textContent = 'Sending…';
+        const r = await postForm('order', { name: name, phone: phone, delivery: $('#oDel').value, notes: $('#oNotes').value.trim(), items: basket.map((l) => ({ name: l.name, option: l.option, qty: l.qty })) }, $('#oHp').value);
+        btn.disabled = false; btn.textContent = 'Send my request';
+        if (r.ok) {
+            const ref = r.ref;
+            show(true, 'Thank you, ' + name.split(' ')[0] + '! Your request ' + ref + ' has been received.\n' + (r.items || lines) + '\nTotal: ' + (r.total || totals()) + '\nWe will contact you on WhatsApp to confirm availability and how to pay.',
+                h('a', { class: 'btn btn-wa', style: 'margin-top:12px;width:100%', href: waLink('Hello Jesus Life Church, I placed order ' + ref + '. My name is ' + name + '.'), target: '_blank', rel: 'noopener noreferrer', text: '💬 Message us about order ' + ref }));
+            $('#oOut').firstChild.style.whiteSpace = 'pre-line';
+            basket = []; save(); renderCart(); $('#orderForm').reset();
+        } else {
+            show(false, r.error || 'We could not send this right now.', h('a', { class: 'btn btn-wa', style: 'margin-top:12px;width:100%', href: waLink(wa), target: '_blank', rel: 'noopener noreferrer', text: '💬 Send my order on WhatsApp instead' }));
+        }
+    });
+
+    loadContent().then((c) => {
+        products = (c.products || []).filter((p) => p.name);
+        // drop basket lines for items that no longer exist
+        if (products.length) { basket = basket.filter((l) => products.some((p) => p.name === l.name)); save(); }
+        const note = (c.settings && c.settings.storenote) || 'Everything is made to order. Place your request and we will confirm availability and payment details with you on WhatsApp.';
+        $('#storeNote').textContent = note;
+        const cats = ['All'].concat(Array.from(new Set(products.map((p) => p.category).filter(Boolean))));
+        const box = $('#cats');
+        if (cats.length > 2) cats.forEach((k) => { const b = h('button', { class: 'chip' + (k === cat ? ' on' : ''), type: 'button', text: k }); b.addEventListener('click', () => { cat = k; box.querySelectorAll('.chip').forEach((x) => x.classList.toggle('on', x.textContent === k)); renderProducts(); }); box.append(b); }); else box.classList.add('hidden');
+        renderProducts(); renderCart();
+    });
+})();
+</script>
+</body>
+</html>

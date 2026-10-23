@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Send an anonymous message to the leadership of Jesus Life Church. No name needed.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jesus Life Church">
+    <meta property="og:title" content="Speak Up | Jesus Life Church">
+    <meta property="og:description" content="Send an anonymous message to the leadership of Jesus Life Church. No name needed.">
+    <meta property="og:image" content="share.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#09090f">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" type="image/png" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <title>Speak Up | Jesus Life Church</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="JLC logo" class="logo-img" onerror="this.style.display='none'">
+                <span><b>Jesus Life Church</b><small>Forward We Go</small></span>
+            </a>
+            <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="media.html">Media</a></li>
+                <li><a href="store.html">Store</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="more"><a href="#" class="active">More ▾</a>
+                    <ul>
+                        <li><a href="devotional.html">Devotional &amp; Bible Plan</a></li>
+                        <li><a href="notebook.html">Sermon Notes</a></li>
+                        <li><a href="book.html">Book a One-on-One</a></li>
+                        <li><a href="welcome.html">I’m New &amp; Prayer</a></li>
+                        <li><a href="testimony.html">Testimonies</a></li>
+                        <li><a href="gallery.html">Photo Gallery</a></li>
+                        <li><a href="speakup.html">Speak Up (anonymous)</a></li>
+                    </ul>
+                </li>
+                <li><a href="give.html" class="btn-give">Give Online</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-head">
+            <div class="wrap">
+                <span class="eyebrow">A safe place to speak</span>
+                <h1>Speak Up</h1>
+                <p>Share a suggestion, a concern or anything on your heart, without giving your name.</p>
+            </div>
+        </div>
+        <div class="wrap">
+            <form class="card form-card" id="sForm" novalidate>
+                <div class="msg-ok" style="margin-top:0;background:rgba(124,58,237,.12);border-color:rgba(124,58,237,.35);color:#ddd6fe;">This form does not ask for, or save, your name, phone number or device details. A small, trusted team reads every message.</div>
+                <label class="fl" for="sCat">What is this about?</label>
+                <select class="field" id="sCat"><option>Suggestion</option><option>Concern</option><option>Complaint</option><option>Encouragement</option><option>Something else</option></select>
+                <label class="fl" for="sMsg">Your message <span class="req">*</span></label>
+                <textarea class="field" id="sMsg" maxlength="2000" style="min-height:170px;" placeholder="Write freely and respectfully."></textarea>
+                <label class="check"><input type="checkbox" id="sWant"> I would like a reply. I will leave a way to reach me (this means we will know who you are).</label>
+                <div id="sContactBox" class="hidden"><label class="fl" for="sContact">Phone, WhatsApp or email</label><input class="field" id="sContact" type="text" maxlength="60"></div>
+                <div class="hp" aria-hidden="true"><label>Leave this empty <input id="sHp" type="text" tabindex="-1" autocomplete="off"></label></div>
+                <div id="sOut"></div>
+                <button type="submit" class="btn btn-primary" id="sBtn" style="width:100%;margin-top:20px;">Send anonymously</button>
+                <div class="msg-err" style="margin-top:18px;background:rgba(250,204,21,.08);border-color:rgba(250,204,21,.3);color:#fde68a;"><b>If someone is in danger or being harmed</b>, especially a child, please do not wait for a reply here. Contact the police or local child protection services right away, and tell a trusted leader.</div>
+                <p class="tiny">Because we cannot reply to anonymous messages, we cannot answer questions sent this way. For anything urgent, <a href="contact.html">contact us</a> directly. See our <a href="privacy.html">privacy notice</a>.</p>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <div class="f-bottom" style="border:0;padding:0;">
+                <p>&copy; 2026 Jesus Life Church · Forward We Go. All rights reserved.</p>
+                <p style="margin-top:8px;"><a href="index.html" style="color:#c4b5fd;text-decoration:none;">Home</a> · <a href="store.html" style="color:#c4b5fd;text-decoration:none;">Store</a> · <a href="book.html" style="color:#c4b5fd;text-decoration:none;">Book</a> · <a href="welcome.html" style="color:#c4b5fd;text-decoration:none;">I’m New</a> · <a href="give.html" style="color:#c4b5fd;text-decoration:none;">Give Online</a> · <a href="privacy.html" style="color:#c4b5fd;text-decoration:none;">Privacy</a></p>
+            </div>
+        </div>
+    </footer>
+
+<script src="site.js"></script>
+<script>
+(function () {
+    const { $, h, postForm } = JLC;
+    $('#sWant').addEventListener('change', () => $('#sContactBox').classList.toggle('hidden', !$('#sWant').checked));
+    function show(ok, text) { const o = $('#sOut'); o.textContent = ''; o.append(h('div', { class: ok ? 'msg-ok' : 'msg-err', text: text })); }
+    $('#sForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const rec = { category: $('#sCat').value, message: $('#sMsg').value.trim(), wantReply: $('#sWant').checked, contact: $('#sContact').value.trim() };
+        if (rec.message.length < 10) return show(false, 'Please write a little more.');
+        if (rec.wantReply && !rec.contact) return show(false, 'Please add a way to reach you, or untick the reply box to stay anonymous.');
+        const btn = $('#sBtn'); btn.disabled = true; btn.textContent = 'Sending…';
+        const r = await postForm('anon', rec, $('#sHp').value);
+        btn.disabled = false; btn.textContent = 'Send anonymously';
+        if (r.ok) { show(true, 'Thank you for speaking up. Your message has been received.'); $('#sForm').reset(); $('#sContactBox').classList.add('hidden'); }
+        else show(false, (r.error || 'We could not send this right now.') + ' Please try again a little later.');
+    });
+})();
+</script>
+</body>
+</html>

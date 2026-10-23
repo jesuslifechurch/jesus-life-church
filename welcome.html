@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="New to Jesus Life Church? Plan your visit or send a prayer request. Harare, Zimbabwe.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jesus Life Church">
+    <meta property="og:title" content="I’m New | Jesus Life Church">
+    <meta property="og:description" content="New to Jesus Life Church? Plan your visit or send a prayer request. Harare, Zimbabwe.">
+    <meta property="og:image" content="share.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#09090f">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" type="image/png" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <title>I’m New | Jesus Life Church</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="JLC logo" class="logo-img" onerror="this.style.display='none'">
+                <span><b>Jesus Life Church</b><small>Forward We Go</small></span>
+            </a>
+            <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="media.html">Media</a></li>
+                <li><a href="store.html">Store</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="more"><a href="#" class="active">More ▾</a>
+                    <ul>
+                        <li><a href="devotional.html">Devotional &amp; Bible Plan</a></li>
+                        <li><a href="notebook.html">Sermon Notes</a></li>
+                        <li><a href="book.html">Book a One-on-One</a></li>
+                        <li><a href="welcome.html">I’m New &amp; Prayer</a></li>
+                        <li><a href="testimony.html">Testimonies</a></li>
+                        <li><a href="gallery.html">Photo Gallery</a></li>
+                        <li><a href="speakup.html">Speak Up (anonymous)</a></li>
+                    </ul>
+                </li>
+                <li><a href="give.html" class="btn-give">Give Online</a></li>
+            </ul></div>
+    </header>
+
+    <main>
+        <div class="page-head">
+            <div class="wrap">
+                <span class="eyebrow">You are welcome</span>
+                <h1>I’m New</h1>
+                <p>Tell us you are coming, or send a prayer request. A member of our team will reach out to you.</p>
+            </div>
+        </div>
+
+        <div class="wrap">
+            <div class="chips" style="margin-top:26px;">
+                <button class="chip on" type="button" id="tabNew">I’m new / plan a visit</button>
+                <button class="chip" type="button" id="tabPray">Prayer request</button>
+            </div>
+
+            <form class="card form-card" id="newForm" novalidate>
+                <h2>Plan your visit</h2>
+                <p class="sub">We meet Sundays 10:30 AM – 1:30 PM and Wednesdays 5:00 – 7:30 PM at Hatcliffe Mabanana Blue Tent, Harare.</p>
+                <div class="row2">
+                    <div><label class="fl" for="vName">Your name <span class="req">*</span></label><input class="field" id="vName" type="text" maxlength="80" autocomplete="name"></div>
+                    <div><label class="fl" for="vPhone">Phone / WhatsApp <span class="req">*</span></label><input class="field" id="vPhone" type="tel" maxlength="20" autocomplete="tel"></div>
+                </div>
+                <label class="fl" for="vEmail">Email (optional)</label>
+                <input class="field" id="vEmail" type="email" maxlength="80" autocomplete="email">
+                <label class="fl" for="vPlan">What best describes you?</label>
+                <select class="field" id="vPlan">
+                    <option>I am visiting for the first time</option>
+                    <option>I am planning to visit this week</option>
+                    <option>I want to join the community</option>
+                    <option>Something else</option>
+                </select>
+                <label class="fl" for="vMsg">Anything you would like us to know? (optional)</label>
+                <textarea class="field" id="vMsg" maxlength="600"></textarea>
+                <div class="hp" aria-hidden="true"><label>Leave this empty <input id="vHp" type="text" tabindex="-1" autocomplete="off"></label></div>
+                <div id="vOut"></div>
+                <button type="submit" class="btn btn-primary" style="width:100%;margin-top:20px;" id="vBtn">Send</button>
+                <p class="tiny">We use your details only to follow up with you. See our <a href="privacy.html">privacy notice</a>.</p>
+            </form>
+
+            <form class="card form-card hidden" id="prayForm" novalidate>
+                <h2>Prayer request</h2>
+                <p class="sub">We would love to pray with you. Share as much or as little as you like.</p>
+                <div class="row2">
+                    <div><label class="fl" for="pName">Your name (optional)</label><input class="field" id="pName" type="text" maxlength="80" autocomplete="name"></div>
+                    <div><label class="fl" for="pPhone">Phone / WhatsApp (optional)</label><input class="field" id="pPhone" type="tel" maxlength="20" autocomplete="tel"></div>
+                </div>
+                <label class="fl" for="pReq">Your prayer request <span class="req">*</span></label>
+                <textarea class="field" id="pReq" maxlength="800"></textarea>
+                <label class="check"><input type="checkbox" id="pPriv"> Keep this private. Share it only with the prayer team.</label>
+                <div class="hp" aria-hidden="true"><label>Leave this empty <input id="pHp" type="text" tabindex="-1" autocomplete="off"></label></div>
+                <div id="pOut"></div>
+                <button type="submit" class="btn btn-primary" style="width:100%;margin-top:20px;" id="pBtn">Send prayer request</button>
+                <p class="tiny">See our <a href="privacy.html">privacy notice</a>.</p>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <div class="f-bottom" style="border:0;padding:0;">
+                <p>&copy; 2026 Jesus Life Church · Forward We Go. All rights reserved.</p>
+                <p style="margin-top:8px;"><a href="index.html" style="color:#c4b5fd;text-decoration:none;">Home</a> · <a href="about.html" style="color:#c4b5fd;text-decoration:none;">About</a> · <a href="welcome.html" style="color:#c4b5fd;text-decoration:none;">I’m New</a> · <a href="gallery.html" style="color:#c4b5fd;text-decoration:none;">Gallery</a> · <a href="give.html" style="color:#c4b5fd;text-decoration:none;">Give Online</a> · <a href="privacy.html" style="color:#c4b5fd;text-decoration:none;">Privacy</a></p>
+            </div>
+        </div>
+    </footer>
+
+<script src="site.js"></script>
+<script>
+(function () {
+    const { $, h, postForm, waLink } = JLC;
+    const nf = $('#newForm'), pf = $('#prayForm');
+    function tab(isNew) {
+        nf.classList.toggle('hidden', !isNew); pf.classList.toggle('hidden', isNew);
+        $('#tabNew').classList.toggle('on', isNew); $('#tabPray').classList.toggle('on', !isNew);
+    }
+    $('#tabNew').addEventListener('click', () => tab(true));
+    $('#tabPray').addEventListener('click', () => tab(false));
+    if (location.hash === '#prayer') tab(false);
+
+    function show(out, ok, text, waText) {
+        out.textContent = '';
+        out.append(h('div', { class: ok ? 'msg-ok' : 'msg-err', text: text }));
+        if (!ok && waText) out.append(h('a', { class: 'btn btn-wa', style: 'margin-top:12px;width:100%', href: waLink(waText), target: '_blank', rel: 'noopener noreferrer', text: '💬 Send on WhatsApp instead' }));
+    }
+
+    nf.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const rec = { name: $('#vName').value.trim(), phone: $('#vPhone').value.trim(), email: $('#vEmail').value.trim(), plan: $('#vPlan').value, message: $('#vMsg').value.trim() };
+        const out = $('#vOut');
+        if (!rec.name || rec.phone.replace(/\D/g, '').length < 9) return show(out, false, 'Please enter your name and a valid phone number.');
+        const wa = 'Hello Jesus Life Church, I am ' + rec.name + '. ' + rec.plan + '. My number: ' + rec.phone + (rec.message ? '\n' + rec.message : '');
+        $('#vBtn').disabled = true; $('#vBtn').textContent = 'Sending…';
+        const r = await postForm('visitor', rec, $('#vHp').value);
+        $('#vBtn').disabled = false; $('#vBtn').textContent = 'Send';
+        if (r.ok) { show(out, true, 'Thank you, ' + rec.name.split(' ')[0] + '! We have received your details and someone will contact you soon. We look forward to meeting you.'); nf.reset(); }
+        else show(out, false, r.error || 'We could not send this right now.', wa);
+    });
+
+    pf.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const rec = { name: $('#pName').value.trim(), phone: $('#pPhone').value.trim(), request: $('#pReq').value.trim(), isPrivate: $('#pPriv').checked };
+        const out = $('#pOut');
+        if (!rec.request) return show(out, false, 'Please write your prayer request.');
+        const wa = 'Hello Jesus Life Church, please pray with me:\n' + rec.request + (rec.name ? '\n- ' + rec.name : '');
+        $('#pBtn').disabled = true; $('#pBtn').textContent = 'Sending…';
+        const r = await postForm('prayer', rec, $('#pHp').value);
+        $('#pBtn').disabled = false; $('#pBtn').textContent = 'Send prayer request';
+        if (r.ok) { show(out, true, 'We have received your request and we are standing with you in prayer. God bless you.'); pf.reset(); }
+        else show(out, false, r.error || 'We could not send this right now.', wa);
+    });
+})();
+</script>
+</body>
+</html>

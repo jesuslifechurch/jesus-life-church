@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A private digital notebook for Sunday sermons. Saved on your phone.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jesus Life Church">
+    <meta property="og:title" content="My Sermon Notes | Jesus Life Church">
+    <meta property="og:description" content="A private digital notebook for Sunday sermons. Saved on your phone.">
+    <meta property="og:image" content="share.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#09090f">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" type="image/png" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <title>My Sermon Notes | Jesus Life Church</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .bar-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+        .bar-row select { flex: 1; min-width: 200px; }
+        .saved { color: #86efac; font-size: .85rem; min-height: 1.2em; }
+        .nb-actions { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; margin-top: 18px; }
+        .nb h3 { margin: 18px 0 6px; font-size: 1rem; color: #c4b5fd; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="JLC logo" class="logo-img" onerror="this.style.display='none'">
+                <span><b>Jesus Life Church</b><small>Forward We Go</small></span>
+            </a>
+            <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="media.html">Media</a></li>
+                <li><a href="store.html">Store</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="more"><a href="#" class="active">More ▾</a>
+                    <ul>
+                        <li><a href="devotional.html">Devotional &amp; Bible Plan</a></li>
+                        <li><a href="notebook.html">Sermon Notes</a></li>
+                        <li><a href="book.html">Book a One-on-One</a></li>
+                        <li><a href="welcome.html">I’m New &amp; Prayer</a></li>
+                        <li><a href="testimony.html">Testimonies</a></li>
+                        <li><a href="gallery.html">Photo Gallery</a></li>
+                        <li><a href="speakup.html">Speak Up (anonymous)</a></li>
+                    </ul>
+                </li>
+                <li><a href="give.html" class="btn-give">Give Online</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-head">
+            <div class="wrap">
+                <span class="eyebrow">Sunday service</span>
+                <h1>My Sermon Notes</h1>
+                <p>Take notes during the message. They are saved on your phone, so you can come back to them any time.</p>
+            </div>
+        </div>
+        <div class="wrap">
+            <div class="card form-card nb">
+                <div class="bar-row">
+                    <select class="field" id="nbList" aria-label="Saved notes"></select>
+                    <button class="btn btn-primary btn-sm" type="button" id="nbNew">+ New note</button>
+                </div>
+
+                <div class="row2">
+                    <div><label class="fl" for="nbDate">Date</label><input class="field" id="nbDate" type="date"></div>
+                    <div><label class="fl" for="nbSpeaker">Speaker / Pastor</label><input class="field" id="nbSpeaker" type="text" maxlength="80"></div>
+                </div>
+                <label class="fl" for="nbTitle">Sermon title</label>
+                <input class="field" id="nbTitle" type="text" maxlength="120">
+                <label class="fl" for="nbScr">Key scriptures</label>
+                <input class="field" id="nbScr" type="text" maxlength="200" placeholder="e.g. 2 Corinthians 12:9; Revelation 12:11">
+                <button class="btn btn-ghost btn-sm" type="button" id="nbLatest" style="margin-top:10px;">Fill in from the latest sermon</button>
+
+                <h3>Notes</h3>
+                <textarea class="field" id="nbNotes" style="min-height:220px;" placeholder="Write what stands out as the message is preached…"></textarea>
+                <h3>What is God saying to me?</h3>
+                <textarea class="field" id="nbSay" style="min-height:100px;"></textarea>
+                <h3>What will I do this week? Prayer points</h3>
+                <textarea class="field" id="nbDo" style="min-height:100px;"></textarea>
+
+                <div class="saved" id="nbSaved" role="status"></div>
+                <div class="nb-actions">
+                    <button class="btn btn-wa btn-sm" type="button" id="nbWa">💬 Share on WhatsApp</button>
+                    <button class="btn btn-ghost btn-sm" type="button" id="nbDl">⬇ Download</button>
+                    <button class="btn btn-ghost btn-sm" type="button" id="nbCopy">📋 Copy</button>
+                    <button class="btn btn-ghost btn-sm" type="button" id="nbDel">🗑 Delete note</button>
+                </div>
+                <p class="tiny">Your notes stay on this phone or computer only. We never see them. If you clear your browser data they will be lost, so download any you want to keep.</p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <div class="f-bottom" style="border:0;padding:0;">
+                <p>&copy; 2026 Jesus Life Church · Forward We Go. All rights reserved.</p>
+                <p style="margin-top:8px;"><a href="index.html" style="color:#c4b5fd;text-decoration:none;">Home</a> · <a href="store.html" style="color:#c4b5fd;text-decoration:none;">Store</a> · <a href="book.html" style="color:#c4b5fd;text-decoration:none;">Book</a> · <a href="welcome.html" style="color:#c4b5fd;text-decoration:none;">I’m New</a> · <a href="give.html" style="color:#c4b5fd;text-decoration:none;">Give Online</a> · <a href="privacy.html" style="color:#c4b5fd;text-decoration:none;">Privacy</a></p>
+            </div>
+        </div>
+    </footer>
+
+<script src="site.js"></script>
+<script>
+(function () {
+    const { $, h, todayYmd, fmtDate, isYmd, loadContent, waLink } = JLC;
+    const KEY = 'jlc_notes_v1';
+    let notes = [], cur = null, timer = null;
+    try { const n = JSON.parse(localStorage.getItem(KEY) || '[]'); if (Array.isArray(n)) notes = n; } catch (e) { /* ignore */ }
+    const persist = () => { try { localStorage.setItem(KEY, JSON.stringify(notes)); return true; } catch (e) { return false; } };
+    const F = { date: '#nbDate', speaker: '#nbSpeaker', title: '#nbTitle', scriptures: '#nbScr', notes: '#nbNotes', saying: '#nbSay', actions: '#nbDo' };
+
+    function newNote() { cur = { id: 'n' + Date.now(), date: todayYmd(), speaker: '', title: '', scriptures: '', notes: '', saying: '', actions: '' }; notes.unshift(cur); load(); }
+    function load() { Object.keys(F).forEach((k) => { $(F[k]).value = cur[k] || ''; }); renderList(); }
+    function renderList() {
+        const sel = $('#nbList'); sel.textContent = '';
+        notes.forEach((n) => sel.append(h('option', { value: n.id, text: (isYmd(n.date) ? fmtDate(n.date) : 'Note') + (n.title ? ' · ' + n.title : ''), selected: cur && n.id === cur.id ? 'selected' : null })));
+        if (cur) sel.value = cur.id;
+    }
+    function update() {
+        Object.keys(F).forEach((k) => { cur[k] = $(F[k]).value; });
+        clearTimeout(timer);
+        timer = setTimeout(() => { $('#nbSaved').textContent = persist() ? 'Saved on this device ✓' : 'Could not save (private browsing?). Please download your note.'; renderList(); }, 400);
+    }
+    Object.keys(F).forEach((k) => $(F[k]).addEventListener('input', update));
+    $('#nbList').addEventListener('change', (e) => { cur = notes.find((n) => n.id === e.target.value) || cur; load(); });
+    $('#nbNew').addEventListener('click', () => { if (cur && !cur.title && !cur.notes && !cur.saying && !cur.actions) return; newNote(); persist(); });
+
+    function text() {
+        const d = isYmd(cur.date) ? fmtDate(cur.date, true) : '';
+        return ['MY SERMON NOTES · Jesus Life Church', d, cur.title ? 'Title: ' + cur.title : '', cur.speaker ? 'Speaker: ' + cur.speaker : '', cur.scriptures ? 'Scriptures: ' + cur.scriptures : '',
+            cur.notes ? '\nNOTES\n' + cur.notes : '', cur.saying ? '\nWHAT GOD IS SAYING TO ME\n' + cur.saying : '', cur.actions ? '\nWHAT I WILL DO / PRAYER POINTS\n' + cur.actions : ''].filter(Boolean).join('\n');
+    }
+    $('#nbWa').addEventListener('click', () => { update(); window.open('https://wa.me/?text=' + encodeURIComponent(text()), '_blank', 'noopener'); });
+    $('#nbCopy').addEventListener('click', async () => { update(); try { await navigator.clipboard.writeText(text()); $('#nbSaved').textContent = 'Copied ✓'; } catch (e) { $('#nbSaved').textContent = 'Could not copy. Use Download instead.'; } });
+    $('#nbDl').addEventListener('click', () => {
+        update();
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(new Blob([text()], { type: 'text/plain;charset=utf-8' }));
+        a.download = 'sermon-notes-' + (cur.date || 'note') + '.txt';
+        document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 500);
+    });
+    $('#nbDel').addEventListener('click', () => {
+        if (!confirm('Delete this note from this device?')) return;
+        notes = notes.filter((n) => n.id !== cur.id); persist();
+        if (notes.length) { cur = notes[0]; load(); } else newNote();
+    });
+    $('#nbLatest').addEventListener('click', async () => {
+        const c = await loadContent();
+        const s = (c.sermons || []).filter((x) => x.title).sort((a, b) => String(b.date).localeCompare(String(a.date)))[0];
+        if (!s) { $('#nbSaved').textContent = 'No sermon has been posted yet. Type the details in.'; return; }
+        $('#nbTitle').value = s.title || ''; $('#nbSpeaker').value = s.speaker || ''; if (isYmd(s.date)) $('#nbDate').value = s.date; update();
+    });
+
+    if (notes.length) { cur = notes[0]; load(); } else newNote();
+})();
+</script>
+</body>
+</html>

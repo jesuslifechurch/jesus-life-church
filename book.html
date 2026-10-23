@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Request a one-on-one appointment with the man of God at Jesus Life Church, Harare.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jesus Life Church">
+    <meta property="og:title" content="Book a One-on-One | Jesus Life Church">
+    <meta property="og:description" content="Request a one-on-one appointment with the man of God at Jesus Life Church, Harare.">
+    <meta property="og:image" content="share.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#09090f">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" type="image/png" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <title>Book a One-on-One | Jesus Life Church</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="JLC logo" class="logo-img" onerror="this.style.display='none'">
+                <span><b>Jesus Life Church</b><small>Forward We Go</small></span>
+            </a>
+            <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="media.html">Media</a></li>
+                <li><a href="store.html">Store</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="more"><a href="#" class="active">More ▾</a>
+                    <ul>
+                        <li><a href="devotional.html">Devotional &amp; Bible Plan</a></li>
+                        <li><a href="notebook.html">Sermon Notes</a></li>
+                        <li><a href="book.html">Book a One-on-One</a></li>
+                        <li><a href="welcome.html">I’m New &amp; Prayer</a></li>
+                        <li><a href="testimony.html">Testimonies</a></li>
+                        <li><a href="gallery.html">Photo Gallery</a></li>
+                        <li><a href="speakup.html">Speak Up (anonymous)</a></li>
+                    </ul>
+                </li>
+                <li><a href="give.html" class="btn-give">Give Online</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <div class="page-head">
+            <div class="wrap">
+                <span class="eyebrow">One-on-One</span>
+                <h1>Book an Appointment</h1>
+                <p>Request time to meet with the man of God for prayer, counsel or direction.</p>
+            </div>
+        </div>
+        <div class="wrap">
+            <form class="card form-card" id="bForm" novalidate>
+                <div class="msg-ok" id="bNote" style="margin-top:0;background:rgba(124,58,237,.12);border-color:rgba(124,58,237,.35);color:#ddd6fe;"></div>
+                <div class="row2">
+                    <div><label class="fl" for="bName">Your name <span class="req">*</span></label><input class="field" id="bName" type="text" maxlength="80" autocomplete="name"></div>
+                    <div><label class="fl" for="bPhone">Phone / WhatsApp <span class="req">*</span></label><input class="field" id="bPhone" type="tel" maxlength="20" autocomplete="tel"></div>
+                </div>
+                <label class="fl" for="bEmail">Email (optional)</label>
+                <input class="field" id="bEmail" type="email" maxlength="80" autocomplete="email">
+                <label class="fl" for="bTopic">What would you like to speak about?</label>
+                <select class="field" id="bTopic"><option>Prayer</option><option>Counselling</option><option>Marriage and family</option><option>Direction and guidance</option><option>Something else</option></select>
+                <div class="row2">
+                    <div><label class="fl" for="bDate">Preferred date</label><input class="field" id="bDate" type="date"></div>
+                    <div><label class="fl" for="bTime">Preferred time</label><select class="field" id="bTime"><option>Any time</option><option>Morning</option><option>Afternoon</option><option>Evening</option></select></div>
+                </div>
+                <label class="fl" for="bMode">How would you like to meet?</label>
+                <select class="field" id="bMode"><option>In person</option><option>Phone call</option><option>WhatsApp video call</option></select>
+                <label class="fl" for="bNoteTxt">Anything we should know? (optional)</label>
+                <textarea class="field" id="bNoteTxt" maxlength="500" placeholder="Keep it brief. You can share the details when you meet."></textarea>
+                <div class="hp" aria-hidden="true"><label>Leave this empty <input id="bHp" type="text" tabindex="-1" autocomplete="off"></label></div>
+                <div id="bOut"></div>
+                <button type="submit" class="btn btn-primary" id="bBtn" style="width:100%;margin-top:20px;">Request appointment</button>
+                <p class="tiny">This is a request only. Your appointment is not confirmed until we contact you. Please do not write sensitive details here. See our <a href="privacy.html">privacy notice</a>.</p>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <div class="f-bottom" style="border:0;padding:0;">
+                <p>&copy; 2026 Jesus Life Church · Forward We Go. All rights reserved.</p>
+                <p style="margin-top:8px;"><a href="index.html" style="color:#c4b5fd;text-decoration:none;">Home</a> · <a href="store.html" style="color:#c4b5fd;text-decoration:none;">Store</a> · <a href="book.html" style="color:#c4b5fd;text-decoration:none;">Book</a> · <a href="welcome.html" style="color:#c4b5fd;text-decoration:none;">I’m New</a> · <a href="give.html" style="color:#c4b5fd;text-decoration:none;">Give Online</a> · <a href="privacy.html" style="color:#c4b5fd;text-decoration:none;">Privacy</a></p>
+            </div>
+        </div>
+    </footer>
+
+<script src="site.js"></script>
+<script>
+(function () {
+    const { $, h, postForm, waLink, loadContent, todayYmd, fmtDate } = JLC;
+    $('#bDate').min = todayYmd();
+    loadContent().then((c) => { $('#bNote').textContent = (c.settings && c.settings.bookingnote) || 'Please tell us when you would like to meet. We will contact you to confirm the day and time.'; });
+    function show(ok, text, extra) { const o = $('#bOut'); o.textContent = ''; o.append(h('div', { class: ok ? 'msg-ok' : 'msg-err', text: text })); if (extra) o.append(extra); }
+    $('#bForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const rec = { name: $('#bName').value.trim(), phone: $('#bPhone').value.trim(), email: $('#bEmail').value.trim(), topic: $('#bTopic').value, date: $('#bDate').value, time: $('#bTime').value, mode: $('#bMode').value, note: $('#bNoteTxt').value.trim() };
+        if (!rec.name || rec.phone.replace(/\D/g, '').length < 9) return show(false, 'Please enter your name and a valid phone number.');
+        const when = rec.date ? fmtDate(rec.date, true) + ', ' + rec.time.toLowerCase() : rec.time.toLowerCase();
+        const wa = 'Hello Jesus Life Church, I would like to book a one-on-one appointment. Topic: ' + rec.topic + '. Preferred: ' + when + '. Meeting: ' + rec.mode + '. Name: ' + rec.name + ', ' + rec.phone + '.';
+        const btn = $('#bBtn'); btn.disabled = true; btn.textContent = 'Sending…';
+        const r = await postForm('booking', rec, $('#bHp').value);
+        btn.disabled = false; btn.textContent = 'Request appointment';
+        if (r.ok) {
+            show(true, 'Thank you, ' + rec.name.split(' ')[0] + '. Your request ' + r.ref + ' has been received. We will contact you to confirm the day and time. It is not confirmed until you hear from us.',
+                h('a', { class: 'btn btn-wa', style: 'margin-top:12px;width:100%', href: waLink('Hello Jesus Life Church, I requested appointment ' + r.ref + '. My name is ' + rec.name + '.'), target: '_blank', rel: 'noopener noreferrer', text: '💬 Message us about ' + r.ref }));
+            $('#bForm').reset(); $('#bDate').min = todayYmd();
+        } else show(false, r.error || 'We could not send this right now.', h('a', { class: 'btn btn-wa', style: 'margin-top:12px;width:100%', href: waLink(wa), target: '_blank', rel: 'noopener noreferrer', text: '💬 Request on WhatsApp instead' }));
+    });
+})();
+</script>
+</body>
+</html>

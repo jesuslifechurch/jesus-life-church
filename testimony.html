@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Testimonies of what God is doing at Jesus Life Church, Harare. Share yours.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jesus Life Church">
+    <meta property="og:title" content="Testimonies | Jesus Life Church">
+    <meta property="og:description" content="Testimonies of what God is doing at Jesus Life Church, Harare. Share yours.">
+    <meta property="og:image" content="share.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#09090f">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" type="image/png" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <title>Testimonies | Jesus Life Church</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .scripture { max-width: 700px; margin: 26px auto 0; padding: 22px 26px; text-align: center; font-style: italic; font-size: 1.08rem; color: #e5e7eb; background: rgba(124,58,237,.1); border: 1px solid rgba(124,58,237,.3); border-left: 4px solid var(--purple); border-radius: 14px; }
+        .scripture cite { display: block; margin-top: 10px; font-style: normal; font-size: .8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--purple-soft); }
+        .t-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 22px; }
+        .t-card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 30px; }
+        .t-tag { display: block; font-size: .72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--purple-soft); margin-bottom: 12px; }
+        .t-card p { font-style: italic; color: #e5e7eb; margin-bottom: 18px; white-space: pre-line; }
+        .t-by { color: var(--muted); font-size: .9rem; font-weight: 600; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="nav">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="JLC logo" class="logo-img" onerror="this.style.display='none'">
+                <span><b>Jesus Life Church</b><small>Forward We Go</small></span>
+            </a>
+            <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="media.html">Media</a></li>
+                <li><a href="store.html">Store</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li class="more"><a href="#" class="active">More ▾</a>
+                    <ul>
+                        <li><a href="devotional.html">Devotional &amp; Bible Plan</a></li>
+                        <li><a href="notebook.html">Sermon Notes</a></li>
+                        <li><a href="book.html">Book a One-on-One</a></li>
+                        <li><a href="welcome.html">I’m New &amp; Prayer</a></li>
+                        <li><a href="testimony.html">Testimonies</a></li>
+                        <li><a href="gallery.html">Photo Gallery</a></li>
+                        <li><a href="speakup.html">Speak Up (anonymous)</a></li>
+                    </ul>
+                </li>
+                <li><a href="give.html" class="btn-give">Give Online</a></li>
+            </ul></div>
+    </header>
+
+    <main>
+        <div class="page-head">
+            <div class="wrap">
+                <span class="eyebrow">Testimonies</span>
+                <h1>What God is doing</h1>
+                <p>Read what God has done, and share your own story so others can be encouraged.</p>
+            </div>
+        </div>
+
+        <div class="wrap">
+            <blockquote class="scripture">
+                “And they overcame him by the blood of the Lamb, and by the word of their testimony.”
+                <cite>Revelation 12:11</cite>
+            </blockquote>
+
+            <section class="block" style="padding-top:50px;">
+                <div class="t-grid" id="tGrid"></div>
+            </section>
+
+            <section class="block" id="share">
+                <div class="head"><span class="eyebrow">Your story</span><h2>Share your testimony</h2><p>We read every testimony. Once approved, it appears on this page.</p></div>
+                <form class="card form-card" id="tForm" style="margin-top:0;" novalidate>
+                    <label class="fl" for="tCat" style="margin-top:0;">Type of testimony</label>
+                    <select class="field" id="tCat">
+                        <option>Healing Testimony</option><option>Salvation Story</option><option>Provision</option>
+                        <option>Deliverance</option><option>Breakthrough</option><option>Other</option>
+                    </select>
+                    <div class="row2">
+                        <div><label class="fl" for="tName">Your name <span class="req">*</span></label><input class="field" id="tName" type="text" maxlength="80" autocomplete="name"></div>
+                        <div><label class="fl" for="tPhone">Phone / WhatsApp (private)</label><input class="field" id="tPhone" type="tel" maxlength="20" autocomplete="tel"></div>
+                    </div>
+                    <label class="fl" for="tShow">How should we show your name?</label>
+                    <select class="field" id="tShow">
+                        <option value="full">My full name</option>
+                        <option value="first">My first name only</option>
+                        <option value="anon">Anonymous</option>
+                    </select>
+                    <label class="fl" for="tText">Your testimony <span class="req">*</span></label>
+                    <textarea class="field" id="tText" maxlength="1500" style="min-height:160px;"></textarea>
+                    <label class="check"><input type="checkbox" id="tOk"> I give Jesus Life Church permission to share my testimony on this website, with the name option I chose above.</label>
+                    <div class="hp" aria-hidden="true"><label>Leave this empty <input id="tHp" type="text" tabindex="-1" autocomplete="off"></label></div>
+                    <div id="tOut"></div>
+                    <button type="submit" class="btn btn-primary" style="width:100%;margin-top:20px;" id="tBtn">Send my testimony</button>
+                    <p class="tiny">Prefer WhatsApp? <a id="tWa" href="#" target="_blank" rel="noopener noreferrer">Send it to us there</a>. See our <a href="privacy.html">privacy notice</a>.</p>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <div class="f-bottom" style="border:0;padding:0;">
+                <p>&copy; 2026 Jesus Life Church · Forward We Go. All rights reserved.</p>
+                <p style="margin-top:8px;"><a href="index.html" style="color:#c4b5fd;text-decoration:none;">Home</a> · <a href="about.html" style="color:#c4b5fd;text-decoration:none;">About</a> · <a href="welcome.html" style="color:#c4b5fd;text-decoration:none;">I’m New</a> · <a href="gallery.html" style="color:#c4b5fd;text-decoration:none;">Gallery</a> · <a href="give.html" style="color:#c4b5fd;text-decoration:none;">Give Online</a> · <a href="privacy.html" style="color:#c4b5fd;text-decoration:none;">Privacy</a></p>
+            </div>
+        </div>
+    </footer>
+
+<script src="site.js"></script>
+<script>
+(function () {
+    const { $, h, postForm, waLink, fmtDate, isYmd, loadContent } = JLC;
+    $('#tWa').href = waLink('Hello Jesus Life Church, I would like to share my testimony:');
+
+    loadContent().then((c) => {
+        const g = $('#tGrid');
+        const list = (c.testimonies || []).filter((t) => t.testimony);
+        if (!list.length) { g.append(h('div', { class: 'empty', style: 'grid-column:1/-1', text: 'Testimonies will appear here. Be the first to share what God has done for you!' })); return; }
+        list.forEach((t) => g.append(h('div', { class: 't-card' },
+            h('span', { class: 't-tag', text: t.category || 'Testimony' }),
+            h('p', { text: '“' + t.testimony + '”' }),
+            h('div', { class: 't-by', text: '— ' + (t.name || 'Anonymous') + (isYmd(t.date.slice(0, 10)) ? ' · ' + fmtDate(t.date.slice(0, 10)) : '') }))));
+    });
+
+    function show(ok, text, wa) {
+        const out = $('#tOut'); out.textContent = '';
+        out.append(h('div', { class: ok ? 'msg-ok' : 'msg-err', text: text }));
+        if (!ok && wa) out.append(h('a', { class: 'btn btn-wa', style: 'margin-top:12px;width:100%', href: waLink(wa), target: '_blank', rel: 'noopener noreferrer', text: '💬 Send on WhatsApp instead' }));
+    }
+    $('#tForm').addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const real = $('#tName').value.trim(), mode = $('#tShow').value;
+        const display = mode === 'anon' ? 'Anonymous' : mode === 'first' ? real.split(/\s+/)[0] : real;
+        const rec = { category: $('#tCat').value, realName: real, displayName: display, phone: $('#tPhone').value.trim(), testimony: $('#tText').value.trim(), consent: $('#tOk').checked };
+        if (!real) return show(false, 'Please enter your name.');
+        if (rec.testimony.length < 20) return show(false, 'Please write a little more of your testimony.');
+        if (!rec.consent) return show(false, 'Please tick the box to allow us to share your testimony.');
+        $('#tBtn').disabled = true; $('#tBtn').textContent = 'Sending…';
+        const r = await postForm('testimony', rec, $('#tHp').value);
+        $('#tBtn').disabled = false; $('#tBtn').textContent = 'Send my testimony';
+        if (r.ok) { show(true, 'Thank you for sharing! We will read it and publish it once approved. God bless you.'); $('#tForm').reset(); }
+        else show(false, r.error || 'We could not send this right now.', 'Hello Jesus Life Church, I would like to share my testimony:\n' + rec.testimony + '\n- ' + real);
+    });
+})();
+</script>
+</body>
+</html>

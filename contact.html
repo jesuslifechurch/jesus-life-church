@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Jesus Life Church in Harare, Zimbabwe: prayer requests, visits, giving questions and more.">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Jesus Life Church">
+    <meta property="og:title" content="Contact | Jesus Life Church">
+    <meta property="og:description" content="Contact Jesus Life Church in Harare, Zimbabwe: prayer requests, visits, giving questions and more.">
+    <meta property="og:image" content="share.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="theme-color" content="#09090f">
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="icon" type="image/png" href="icon-192.png">
+    <link rel="apple-touch-icon" href="icon-192.png">
+    <title>Contact | Jesus Life Church</title>
+    <style>
+        :root {
+            --bg: #09090f; --surface: #13131d; --field: #0e0e16; --purple: #7c3aed; --purple-hover: #6d28d9;
+            --purple-soft: #a78bfa; --text: #f3f4f6; --muted: #9ca3af; --line: rgba(255,255,255,.08); --glow: rgba(124,58,237,.28);
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, -apple-system, 'Helvetica Neue', Arial, sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--bg); color: var(--text); line-height: 1.65; overflow-x: hidden; }
+        a { color: inherit; }
+        .wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+
+        header { position: fixed; top: 0; left: 0; width: 100%; z-index: 1000; background: rgba(9,9,15,.78); -webkit-backdrop-filter: blur(14px); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+        .nav { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 14px 24px; max-width: 1120px; margin: 0 auto; }
+        .logo { display: flex; align-items: center; gap: 12px; text-decoration: none; line-height: 1.15; }
+        .logo-img { height: 42px; width: auto; display: block; }
+        .logo b { display: block; font-size: 1.1rem; color: #fff; }
+        .logo small { display: block; font-size: .62rem; font-weight: 600; letter-spacing: 2.5px; text-transform: uppercase; color: var(--purple-soft); }
+        .nav-links { display: flex; align-items: center; gap: 28px; list-style: none; }
+        .nav-links a { color: var(--muted); text-decoration: none; font-size: .95rem; transition: color .2s; }
+        .nav-links a:hover, .nav-links a.active { color: #fff; }
+        .nav-links a.btn-give { color: #fff; background: var(--purple); padding: 10px 22px; border-radius: 999px; font-weight: 600; box-shadow: 0 6px 20px var(--glow); }
+        .nav-links a.btn-give:hover { background: var(--purple-hover); }
+        .menu-btn { display: none; background: none; border: 1px solid var(--line); color: #fff; width: 42px; height: 42px; border-radius: 12px; font-size: 1.2rem; cursor: pointer; }
+
+        .page-head { position: relative; padding: 150px 0 40px; text-align: center; }
+        .page-head::before { content: ""; position: absolute; inset: 0 0 auto 0; height: 100%; background: radial-gradient(600px 260px at 50% 0%, rgba(124,58,237,.3), transparent 70%); pointer-events: none; }
+        .page-head .wrap { position: relative; max-width: 720px; }
+        .eyebrow { display: block; font-size: .78rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; color: var(--purple-soft); margin-bottom: 10px; }
+        .page-head h1 { font-size: clamp(2rem, 5vw, 3rem); letter-spacing: -1px; margin-bottom: 12px; color: #fff; background: linear-gradient(135deg, #fff 35%, #a78bfa); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }
+        .page-head p { color: var(--muted); }
+
+        .layout { display: grid; grid-template-columns: 1fr 1.2fr; gap: 28px; margin-top: 30px; align-items: start; }
+        .stack { display: grid; gap: 16px; }
+        .card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 24px; }
+        .c-row { display: flex; gap: 14px; align-items: flex-start; }
+        .icon { flex: none; width: 46px; height: 46px; border-radius: 14px; display: grid; place-items: center; font-size: 1.3rem; background: rgba(124,58,237,.16); }
+        .card h3 { font-size: 1.02rem; margin-bottom: 2px; }
+        .card .sub { color: var(--muted); font-size: .88rem; margin-bottom: 8px; }
+        .card a.link { color: #c4b5fd; text-decoration: none; font-weight: 700; overflow-wrap: anywhere; }
+        .card a.link:hover { text-decoration: underline; }
+        .card .line { color: #e5e7eb; }
+
+        form.card { padding: 30px; }
+        form h2 { font-size: 1.3rem; margin-bottom: 4px; }
+        form .sub { color: var(--muted); font-size: .92rem; margin-bottom: 8px; }
+        label { display: block; font-size: .88rem; color: var(--muted); margin: 16px 0 6px; }
+        .field { width: 100%; padding: 13px 16px; border-radius: 12px; background: var(--field); border: 1px solid var(--line); color: #fff; font-size: 1rem; }
+        .field:focus { outline: none; border-color: var(--purple); box-shadow: 0 0 0 3px var(--glow); }
+        textarea.field { min-height: 130px; resize: vertical; }
+        select.field option { background: #13131d; }
+        .row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+        .req { color: #f87171; }
+        .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 14px 26px; border-radius: 999px; border: 0; cursor: pointer; font-weight: 700; font-size: 1rem; text-decoration: none; transition: background .2s; }
+        .btn-primary { background: var(--purple); color: #fff; box-shadow: 0 8px 26px var(--glow); width: 100%; margin-top: 22px; }
+        .btn-primary:hover { background: var(--purple-hover); }
+        .btn-ghost { background: rgba(255,255,255,.07); color: #fff; border: 1px solid var(--line); width: 100%; margin-top: 12px; }
+        .btn-ghost:hover { background: rgba(255,255,255,.13); }
+        .note { margin-top: 14px; font-size: .85rem; color: var(--muted); text-align: center; }
+        .error { display: none; margin-top: 14px; padding: 10px 14px; border-radius: 10px; color: #fca5a5; background: rgba(239,68,68,.12); border: 1px solid rgba(239,68,68,.35); font-size: .92rem; }
+
+        footer { margin-top: 90px; background: #06060b; border-top: 1px solid var(--line); padding: 36px 0; text-align: center; color: var(--muted); font-size: .88rem; }
+        footer a { color: #c4b5fd; text-decoration: none; }
+
+        @media (max-width: 820px) {
+            .menu-btn { display: block; }
+            .nav-links { position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; align-items: stretch; gap: 0; background: #09090f; max-height: calc(100vh - 70px); overflow-y: auto; border-bottom: 1px solid var(--line); padding: 8px 24px 20px; display: none; }
+            .nav-links.open { display: flex; }
+            .nav-links li a { display: block; padding: 14px 0; border-bottom: 1px solid var(--line); }
+            .nav-links > li:last-child > a { border: 0; margin-top: 12px; text-align: center; }
+            .layout { grid-template-columns: 1fr; }
+            .row { grid-template-columns: 1fr; gap: 0; }
+            .page-head { padding-top: 130px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="nav">
+            <a href="index.html" class="logo">
+                <img src="logo.png" alt="JLC logo" class="logo-img" onerror="this.style.display='none'">
+                <span><b>Jesus Life Church</b><small>Forward We Go</small></span>
+            </a>
+            <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="media.html">Media</a></li>
+                <li><a href="store.html">Store</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+                <li class="more"><a href="#">More ▾</a>
+                    <ul>
+                        <li><a href="devotional.html">Devotional &amp; Bible Plan</a></li>
+                        <li><a href="notebook.html">Sermon Notes</a></li>
+                        <li><a href="book.html">Book a One-on-One</a></li>
+                        <li><a href="welcome.html">I’m New &amp; Prayer</a></li>
+                        <li><a href="testimony.html">Testimonies</a></li>
+                        <li><a href="gallery.html">Photo Gallery</a></li>
+                        <li><a href="speakup.html">Speak Up (anonymous)</a></li>
+                    </ul>
+                </li>
+                <li><a href="give.html" class="btn-give">Give Online</a></li>
+            </ul></div>
+    </header>
+
+    <main>
+        <div class="page-head">
+            <div class="wrap">
+                <span class="eyebrow">We’d love to hear from you</span>
+                <h1>Contact Us</h1>
+                <p>Planning a visit, need prayer, or have a question about giving? Send us a message and the right person will reply.</p>
+            </div>
+        </div>
+
+        <div class="wrap">
+            <div class="layout">
+                <div class="stack">
+                    <div class="card">
+                        <div class="c-row">
+                            <div class="icon">🙏</div>
+                            <div>
+                                <h3>Church &amp; Prayer Line</h3>
+                                <div class="sub">Visits, prayer requests and general questions</div>
+                                <a class="link" href="tel:+263775284134" id="churchTel">+263 775 284 134</a><br>
+                                <a class="link" href="https://wa.me/263775284134" target="_blank" rel="noopener noreferrer" id="churchWa">Message on WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" id="adminCard">
+                        <div class="c-row">
+                            <div class="icon">🧾</div>
+                            <div>
+                                <h3>Giving &amp; Receipts</h3>
+                                <div class="sub">Questions about a gift, payment confirmation or your receipt</div>
+                                <a class="link" href="tel:+263774047194" id="adminTel">+263 774 047 194</a><br>
+                                <a class="link" href="https://wa.me/263774047194" target="_blank" rel="noopener noreferrer" id="adminWa">Message on WhatsApp</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="c-row">
+                            <div class="icon">✉️</div>
+                            <div>
+                                <h3>Email</h3>
+                                <div class="sub">For longer messages</div>
+                                <a class="link" href="mailto:jesuslifechurchharare@gmail.com">jesuslifechurchharare@gmail.com</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="c-row">
+                            <div class="icon">📍</div>
+                            <div>
+                                <h3>Find us</h3>
+                                <div class="sub">Hatcliffe Mabanana Blue Tent, Harare, Zimbabwe</div>
+                                <div class="line">Sundays 10:30 AM – 1:30 PM</div>
+                                <div class="line">Wednesdays 5:00 PM – 7:30 PM</div>
+                                <a class="link" href="https://www.google.com/maps/search/?api=1&query=Hatcliffe+Mabanana+Blue+Tent+Harare+Zimbabwe" target="_blank" rel="noopener noreferrer" style="display:inline-block;margin-top:8px;">Get directions →</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="card" id="contactForm" novalidate>
+                    <h2>Send a message</h2>
+                    <p class="sub">This opens WhatsApp with your message ready to send.</p>
+
+                    <label for="topic">What is this about?</label>
+                    <select class="field" id="topic">
+                        <option value="church">Plan a visit</option>
+                        <option value="church">Prayer request</option>
+                        <option value="church">General question</option>
+                        <option value="admin">Giving &amp; receipts</option>
+                    </select>
+
+                    <div class="row">
+                        <div>
+                            <label for="name">Your name <span class="req">*</span></label>
+                            <input class="field" id="name" type="text" maxlength="80" autocomplete="name">
+                        </div>
+                        <div>
+                            <label for="phone">Your phone (optional)</label>
+                            <input class="field" id="phone" type="tel" maxlength="20" autocomplete="tel">
+                        </div>
+                    </div>
+
+                    <label for="message">Your message <span class="req">*</span></label>
+                    <textarea class="field" id="message" maxlength="800"></textarea>
+
+                    <div class="error" id="err" role="alert"></div>
+                    <button type="submit" class="btn btn-primary">💬 Send on WhatsApp</button>
+                    <button type="button" class="btn btn-ghost" id="mailBtn">✉️ Send by email instead</button>
+                    <p class="note">We will reply as soon as we can. God bless you.</p>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <p>&copy; 2026 Jesus Life Church · Forward We Go. All rights reserved.</p>
+            <p style="margin-top:8px;"><a href="index.html">Home</a> · <a href="events.html">Events</a> · <a href="media.html">Media</a> · <a href="give.html">Give Online</a> · <a href="receipt.html">Check My Receipt</a></p>
+        </div>
+    </footer>
+
+<script src="site.js"></script>
+<script>
+/* ============ SETTINGS: edit these ============ */
+const CONFIG = {
+    churchWhatsApp: '263775284134',   // church / prayer line (digits only, with country code)
+    adminWhatsApp: '263774047194',    // giving & receipts. Leave '' to hide the admin number.
+    email: 'jesuslifechurchharare@gmail.com'
+};
+/* ================================================ */
+
+const $ = (s) => document.querySelector(s);
+
+// Hide the giving/admin number everywhere if the setting is empty
+if (!CONFIG.adminWhatsApp) {
+    $('#adminCard').style.display = 'none';
+    const opt = document.querySelector('#topic option[value="admin"]');
+    if (opt) opt.remove();
+}
+
+function build() {
+    const sel = $('#topic');
+    const topic = sel.options[sel.selectedIndex].text;
+    const name = $('#name').value.trim();
+    const phone = $('#phone').value.trim();
+    const msg = $('#message').value.trim();
+    const err = $('#err');
+
+    if (!name || !msg) {
+        err.textContent = 'Please enter your name and your message.';
+        err.style.display = 'block';
+        return null;
+    }
+    err.style.display = 'none';
+
+    const text = 'Hello Jesus Life Church,\nTopic: ' + topic + '\n\n' + msg + '\n\nFrom: ' + name + (phone ? '\nMy number: ' + phone : '');
+    return { text: text, topic: topic, to: sel.value === 'admin' ? CONFIG.adminWhatsApp : CONFIG.churchWhatsApp };
+}
+
+$('#contactForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const m = build();
+    if (!m) return;
+    window.open('https://wa.me/' + m.to + '?text=' + encodeURIComponent(m.text), '_blank', 'noopener');
+});
+
+$('#mailBtn').addEventListener('click', () => {
+    const m = build();
+    if (!m) return;
+    location.href = 'mailto:' + CONFIG.email + '?subject=' + encodeURIComponent('Message from website: ' + m.topic) + '&body=' + encodeURIComponent(m.text);
+});
+
+</script>
+</body>
+</html>
